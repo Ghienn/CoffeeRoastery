@@ -113,28 +113,28 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         SizedBox(height: 15.0),
         Container(
-            height: 410.0,
+            height: 350.0,
             child: ListView(scrollDirection: Axis.horizontal, children: [
               _coffeeListCard(
                   'assets/coffee_product.png',
                   'Caffe Misto',
                   'Coffeeshop',
                   'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
-                  '\$4.99',
+                  // '\$4.99',
                   false),
               _coffeeListCard(
                   'assets/coffee_product.png',
                   'Caffe Latte',
                   'BrownHouse',
                   'Rich, full-bodied espresso with bittersweet milk sauce and steamed milk',
-                  '\$3.99',
+                  // '\$3.99',
                   false)
             ])),
-        SizedBox(height: 15.0),
+        SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(
+            const Text(
               'BREWING GEAR',
               style: TextStyle(
                   fontFamily: 'varela',
@@ -142,10 +142,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Color(0xFF473D3A),
                   fontWeight: FontWeight.bold),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 15.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 15.0),
               child: Text(
-                'See All',
+                'See all',
                 style: TextStyle(
                     fontFamily: 'varela',
                     fontSize: 15.0,
@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        SizedBox(height: 15.0),
+        SizedBox(height: 20.0),
         Container(
             height: 125.0,
             child: ListView(scrollDirection: Axis.horizontal, children: [
@@ -180,107 +180,118 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _coffeeListCard(String imgPath, String coffeeName, String shopName,
-      String description, String price, bool isFavorite) {
-    return Padding(
-        padding: EdgeInsets.only(left: 15.0, right: 15.0),
-        child: Container(
-            height: 300.0,
-            width: 225.0,
-            child: Column(
-              children: <Widget>[
-                Stack(children: [
-                  Container(height: 335.0),
-                  Positioned(
-                      top: 75.0,
-                      child: Container(
-                          padding: EdgeInsets.only(left: 20.0, right: 20.0),
-                          height: 260.0,
-                          width: 225.0,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(25.0),
-                              color: Color(0xFFDAB68C)),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                SizedBox(
-                                  height: 140.0,
-                                ),
-                                Text(
-                                  coffeeName,
-                                  style: TextStyle(
-                                      fontFamily: 'varela',
-                                      fontSize: 25.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
-                                SizedBox(height: 10.0),
-                                Text(
-                                  description,
-                                  style: TextStyle(
-                                      fontFamily: 'nunito',
-                                      fontSize: 10.0,
-                                      // fontWeight: FontWeight.w300,
-                                      color: Colors.white),
-                                ),
-                                SizedBox(height: 10.0),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text(
-                                      price,
-                                      style: TextStyle(
-                                          fontFamily: 'varela',
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFF3A4742)),
-                                    ),
-                                    Container(
-                                        height: 20.0,
-                                        width: 20.0,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                            color: Colors.white),
-                                        child: Center(
-                                            child: Icon(Icons.favorite,
-                                                color: isFavorite
-                                                    ? Colors.red
-                                                    : Colors.grey,
-                                                size: 12.0)))
-                                  ],
-                                )
-                              ]))),
-                  Positioned(
-                      top: 10.0,
-                      child: Container(
-                          height: 220.0,
-                          width: 220.0,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(imgPath),
-                                  fit: BoxFit.contain))))
-                ]),
-                SizedBox(height: 20.0),
-                InkWell(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DetailsPage()));
-                    },
-                    child: Container(
-                        height: 50.0,
-                        width: 225.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(25.0),
-                            color: Color(0xFF473D3A)),
-                        child: Center(
-                            child: Text('Order Now',
-                                style: TextStyle(
-                                    fontFamily: 'nunito',
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)))))
-              ],
-            )));
+      String description, bool isFavorite) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => DetailsPage()));
+      },
+      child: Padding(
+          padding: EdgeInsets.only(left: 15.0, right: 15.0),
+          child: Container(
+              height: 300.0,
+              width: 225.0,
+              child: Column(
+                children: <Widget>[
+                  Stack(children: [
+                    Container(height: 335.0),
+                    Positioned(
+                        top: 75.0,
+                        child: Container(
+                            padding: EdgeInsets.only(left: 20.0, right: 20.0),
+                            height: 260.0,
+                            width: 225.0,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(25.0),
+                                color: Color(0xFFDAB68C)),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  // ignore: prefer_const_constructors
+                                  SizedBox(
+                                    height: 160.0,
+                                  ),
+                                  Text(
+                                    coffeeName,
+                                    // ignore: prefer_const_constructors
+                                    style: TextStyle(
+                                        fontFamily: 'varela',
+                                        fontSize: 25.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      // Text(
+                                      //   price,
+                                      //   style: const TextStyle(
+                                      //       fontFamily: 'varela',
+                                      //       fontSize: 16.0,
+                                      //       fontWeight: FontWeight.bold,
+                                      //       color: Color(0xFF3A4742)),
+                                      // ),
+                                      Container(
+                                        height: 50.0,
+                                        width: 150.0,
+                                        child: Text(
+                                          description,
+                                          maxLines: 4,
+                                          style: const TextStyle(
+                                              fontFamily: 'nunito',
+                                              fontSize: 10.0,
+                                              // fontWeight: FontWeight.w300,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      Container(
+                                          height: 20.0,
+                                          width: 20.0,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                              color: Colors.white),
+                                          child: Center(
+                                              child: Icon(Icons.favorite,
+                                                  color: isFavorite
+                                                      ? Colors.red
+                                                      : Colors.grey,
+                                                  size: 12.0)))
+                                    ],
+                                  )
+                                ]))),
+                    Positioned(
+                        top: 10.0,
+                        child: Container(
+                            height: 230.0,
+                            width: 230.0,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(imgPath),
+                                    fit: BoxFit.contain))))
+                  ]),
+                  // InkWell(
+                  //     onTap: () {
+                  //       Navigator.of(context).push(MaterialPageRoute(
+                  //           builder: (context) => DetailsPage()));
+                  //     },
+                  //     child: Container(
+                  //         height: 50.0,
+                  //         width: 225.0,
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(25.0),
+                  //             color: Color(0xFF473D3A)),
+                  //         child: Center(
+                  //             child: Text('Order Now',
+                  //                 style: TextStyle(
+                  //                     fontFamily: 'nunito',
+                  //                     fontSize: 14.0,
+                  //                     fontWeight: FontWeight.bold,
+                  //                     color: Colors.white)))))
+                ],
+              ))),
+    );
   }
 }
