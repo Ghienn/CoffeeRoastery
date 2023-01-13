@@ -95,13 +95,21 @@ flutter:
    - assets/
 
   fonts:
-    - family: varela
-      fonts:
-        - asset: assets/VarelaRound-Regular.ttf
+    # - family: varela
+    #   fonts:
+    #     - asset: assets/VarelaRound-Regular.ttf
+    #       weight: 700
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
-    - family: nunito
+
+    # - family: nunito
+    #   fonts:
+    #     - asset: assets/Nunito-Regular.ttf
+    #     - asset: assets/Nunito-Light.ttf
+    #       weight: 300
+    - family: opensans
       fonts:
-        - asset: assets/Nunito-Regular.ttf
-        - asset: assets/Nunito-Light.ttf
-          weight: 300
+        - asset: assets/OpenSans-Bold.ttf
+        - asset: assets/OpenSans-SemiBold.ttf
+        - asset: assets/OpenSans-Regular.ttf
+

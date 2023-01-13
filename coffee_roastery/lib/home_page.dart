@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'details_page.dart';
+import 'coffee_details_page.dart';
+import 'gear_detail.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -22,25 +23,30 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
                 padding: EdgeInsets.only(left: 0.0),
                 child: Container(
-                  height: 35.0,
-                  width: 35.0,
+                  height: 30.0,
+                  width: 30.0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: DecorationImage(
-                        image: AssetImage('assets/option.png'),
+                        image: AssetImage('assets/menu.png'),
                         fit: BoxFit.cover),
                   ),
                 )),
             Padding(
                 padding: EdgeInsets.only(right: 20.0),
-                child: Container(
-                  height: 35.0,
-                  width: 35.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    image: DecorationImage(
-                        image: AssetImage('assets/search.png'),
-                        fit: BoxFit.cover),
+                child: GestureDetector(
+                  onTap: () {
+                    showSearch(context: context, delegate: CustomSearch());
+                  },
+                  child: Container(
+                    height: 30.0,
+                    width: 30.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      image: DecorationImage(
+                          image: AssetImage('assets/search.png'),
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ))
           ],
@@ -49,53 +55,31 @@ class _MyHomePageState extends State<MyHomePage> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Morning',
+            Text('Morning,',
                 style: TextStyle(
-                    fontFamily: 'varela',
-                    fontSize: 30.0,
+                    fontFamily: 'opensans',
+                    fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF473D3A))),
             Text('Begins with Energy',
                 style: TextStyle(
-                    fontFamily: 'varela',
-                    fontSize: 30.0,
+                    fontFamily: 'opensans',
+                    fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF473D3A))),
           ],
         ),
-        // Padding(
-        //   padding: EdgeInsets.only(right: 15.0),
-        //   child: Container(
-        //     height: 45,
-        //     width: 100,
-        //     alignment: Alignment.centerLeft,
-        //     decoration: BoxDecoration(
-        //       color: const Color(0xFFEFEFF4),
-        //       borderRadius: BorderRadius.circular(12.0),
-        //     ),
-        //     child: TextFormField(
-        //       decoration: InputDecoration(
-        //         border: InputBorder.none,
-        //         prefixIcon: const Icon(
-        //           Icons.search,
-        //           color: Color(0xFF473D3A),
-        //         ),
-        //         hintText: 'Search',
-        //         hintStyle:
-        //             TextStyle(color: Color(0xFF473D3A), fontFamily: 'varela'),
-        //       ),
-        //     ),
-        //   ),
-        // ),
         SizedBox(height: 25.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[
+            // ignore: prefer_const_constructors
             Text(
               'PRODUCTS',
               style: TextStyle(
-                  fontFamily: 'varela',
-                  fontSize: 17.0,
+                  fontFamily: 'opensans',
+                  fontSize: 20.0,
                   color: Color(0xFF473D3A),
                   fontWeight: FontWeight.bold),
             ),
@@ -104,8 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text(
                 'See all',
                 style: TextStyle(
-                    fontFamily: 'varela',
-                    fontSize: 15.0,
+                    fontFamily: 'opensans',
+                    fontSize: 18.0,
                     color: Color(0xFFCEC7C4)),
               ),
             ),
@@ -123,22 +107,23 @@ class _MyHomePageState extends State<MyHomePage> {
                   // '\$4.99',
                   false),
               _coffeeListCard(
-                  'assets/coffee_product.png',
+                  'assets/motor_city.webp',
                   'Caffe Latte',
                   'BrownHouse',
                   'Rich, full-bodied espresso with bittersweet milk sauce and steamed milk',
                   // '\$3.99',
-                  false)
+                  false),
             ])),
         SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[
             const Text(
               'BREWING GEAR',
               style: TextStyle(
-                  fontFamily: 'varela',
-                  fontSize: 17.0,
+                  fontFamily: 'opensans',
+                  fontSize: 20.0,
                   color: Color(0xFF473D3A),
                   fontWeight: FontWeight.bold),
             ),
@@ -147,8 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text(
                 'See all',
                 style: TextStyle(
-                    fontFamily: 'varela',
-                    fontSize: 15.0,
+                    fontFamily: 'opensans',
+                    fontSize: 18.0,
                     color: Color(0xFFCEC7C4)),
               ),
             ),
@@ -168,15 +153,21 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _buildImage(String imgPath) {
-    return Padding(
-        padding: EdgeInsets.only(right: 15.0),
-        child: Container(
-            height: 100.0,
-            width: 175.0,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                image: DecorationImage(
-                    image: AssetImage(imgPath), fit: BoxFit.cover))));
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => GearDetailsPage()));
+      },
+      child: Padding(
+          padding: EdgeInsets.only(right: 15.0),
+          child: Container(
+              height: 100.0,
+              width: 175.0,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  image: DecorationImage(
+                      image: AssetImage(imgPath), fit: BoxFit.cover)))),
+    );
   }
 
   _coffeeListCard(String imgPath, String coffeeName, String shopName,
@@ -184,7 +175,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => DetailsPage()));
+            .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
       },
       child: Padding(
           padding: EdgeInsets.only(left: 15.0, right: 15.0),
@@ -194,7 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: <Widget>[
                   Stack(children: [
-                    Container(height: 335.0),
+                    Container(height: 345.0),
                     Positioned(
                         top: 75.0,
                         child: Container(
@@ -209,14 +200,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                 children: <Widget>[
                                   // ignore: prefer_const_constructors
                                   SizedBox(
-                                    height: 160.0,
+                                    height: 150.0,
                                   ),
                                   Text(
                                     coffeeName,
                                     // ignore: prefer_const_constructors
                                     style: TextStyle(
-                                        fontFamily: 'varela',
-                                        fontSize: 25.0,
+                                        fontFamily: 'opensans',
+                                        fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -228,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       // Text(
                                       //   price,
                                       //   style: const TextStyle(
-                                      //       fontFamily: 'varela',
+                                      //       fontFamily: 'opensans',
                                       //       fontSize: 16.0,
                                       //       fontWeight: FontWeight.bold,
                                       //       color: Color(0xFF3A4742)),
@@ -240,8 +231,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           description,
                                           maxLines: 4,
                                           style: const TextStyle(
-                                              fontFamily: 'nunito',
-                                              fontSize: 10.0,
+                                              fontFamily: 'opensans',
+                                              fontSize: 12.0,
                                               // fontWeight: FontWeight.w300,
                                               color: Colors.white),
                                         ),
@@ -263,7 +254,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   )
                                 ]))),
                     Positioned(
-                        top: 10.0,
+                        top: 0.0,
                         child: Container(
                             height: 230.0,
                             width: 230.0,
@@ -272,26 +263,78 @@ class _MyHomePageState extends State<MyHomePage> {
                                     image: AssetImage(imgPath),
                                     fit: BoxFit.contain))))
                   ]),
-                  // InkWell(
-                  //     onTap: () {
-                  //       Navigator.of(context).push(MaterialPageRoute(
-                  //           builder: (context) => DetailsPage()));
-                  //     },
-                  //     child: Container(
-                  //         height: 50.0,
-                  //         width: 225.0,
-                  //         decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(25.0),
-                  //             color: Color(0xFF473D3A)),
-                  //         child: Center(
-                  //             child: Text('Order Now',
-                  //                 style: TextStyle(
-                  //                     fontFamily: 'nunito',
-                  //                     fontSize: 14.0,
-                  //                     fontWeight: FontWeight.bold,
-                  //                     color: Colors.white)))))
                 ],
               ))),
     );
+  }
+}
+
+class CustomSearch extends SearchDelegate {
+  List<String> allData = [
+    'Arabica',
+    'Culi',
+    'Cherry',
+    'Moka',
+    'Robusta',
+    'Espresso',
+    'Cappuccino',
+    'Macchiato',
+    'Latte'
+  ];
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          close(context, null);
+        },
+        icon: Icon(Icons.arrow_back_ios));
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var item in allData) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(item);
+      }
+    }
+    return ListView.builder(
+        itemCount: matchQuery.length,
+        itemBuilder: ((context, index) {
+          var result = matchQuery[index];
+          return ListTile(
+            title: Text(result),
+          );
+        }));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var item in allData) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(item);
+      }
+    }
+    return ListView.builder(
+        itemCount: matchQuery.length,
+        itemBuilder: ((context, index) {
+          var result = matchQuery[index];
+          return ListTile(
+            title: Text(result),
+          );
+        }));
   }
 }
