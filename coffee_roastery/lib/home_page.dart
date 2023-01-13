@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        SizedBox(height: 15.0),
+        // SizedBox(height: 15.0),
         Container(
             height: 350.0,
             child: ListView(scrollDirection: Axis.horizontal, children: [
@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        SizedBox(height: 20.0),
+        SizedBox(height: 25.0),
         Container(
             height: 125.0,
             child: ListView(scrollDirection: Axis.horizontal, children: [
