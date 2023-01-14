@@ -1,8 +1,11 @@
+import 'package:coffee_roastery/components/accessories_card.dart';
+import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'coffee_details_page.dart';
-import 'gear_detail.dart';
+import 'screens/coffee_details_page.dart';
+import 'components/machine_card.dart';
+import 'screens/gear_detail.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -14,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(
-      padding: EdgeInsets.only(left: 15.0),
+      padding: EdgeInsets.only(left: 20.0),
       children: <Widget>[
         SizedBox(height: 50.0),
         Row(
@@ -60,13 +63,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: 'opensans',
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF473D3A))),
+                    color: AppTheme.textColor)),
             Text('Begins with Energy',
                 style: TextStyle(
                     fontFamily: 'opensans',
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF473D3A))),
+                    color: AppTheme.textColor)),
           ],
         ),
         SizedBox(height: 25.0),
@@ -76,11 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // ignore: prefer_const_constructors
             Text(
-              'PRODUCTS',
+              'ORGANIC COFFEE',
               style: TextStyle(
                   fontFamily: 'opensans',
                   fontSize: 20.0,
-                  color: Color(0xFF473D3A),
+                  color: AppTheme.textColor,
                   fontWeight: FontWeight.bold),
             ),
             Padding(
@@ -89,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'See all',
                 style: TextStyle(
                     fontFamily: 'opensans',
-                    fontSize: 18.0,
+                    fontSize: 16.0,
                     color: Color(0xFFCEC7C4)),
               ),
             ),
@@ -120,11 +123,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[
             const Text(
-              'BREWING GEAR',
+              'MACHINE GEAR',
               style: TextStyle(
                   fontFamily: 'opensans',
                   fontSize: 20.0,
-                  color: Color(0xFF473D3A),
+                  color: AppTheme.textColor,
                   fontWeight: FontWeight.bold),
             ),
             const Padding(
@@ -133,41 +136,48 @@ class _MyHomePageState extends State<MyHomePage> {
                 'See all',
                 style: TextStyle(
                     fontFamily: 'opensans',
-                    fontSize: 18.0,
+                    fontSize: 16.0,
                     color: Color(0xFFCEC7C4)),
               ),
             ),
           ],
         ),
-        SizedBox(height: 25.0),
-        Container(
-            height: 125.0,
-            child: ListView(scrollDirection: Axis.horizontal, children: [
-              _buildImage('assets/gear1.jpg'),
-              _buildImage('assets/gear2.jpg'),
-              _buildImage('assets/gear3.jpg')
-            ])),
+        SizedBox(height: 10.0),
+        const MachineCard(),
+        SizedBox(height: 10.0),
+        const MachineCard(),
+        SizedBox(height: 10.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // ignore: prefer_const_literals_to_create_immutables
+          children: <Widget>[
+            const Text(
+              'ACCESSORIES',
+              style: TextStyle(
+                  fontFamily: 'opensans',
+                  fontSize: 20.0,
+                  color: AppTheme.textColor,
+                  fontWeight: FontWeight.bold),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(right: 15.0),
+              child: Text(
+                'See all',
+                style: TextStyle(
+                    fontFamily: 'opensans',
+                    fontSize: 16.0,
+                    color: Color(0xFFCEC7C4)),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 10.0),
+        const AccessoriesCard(),
+        SizedBox(height: 10.0),
+        const AccessoriesCard(),
         SizedBox(height: 10.0),
       ],
     ));
-  }
-
-  _buildImage(String imgPath) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => GearDetailsPage()));
-      },
-      child: Padding(
-          padding: EdgeInsets.only(right: 15.0),
-          child: Container(
-              height: 100.0,
-              width: 175.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  image: DecorationImage(
-                      image: AssetImage(imgPath), fit: BoxFit.cover)))),
-    );
   }
 
   _coffeeListCard(String imgPath, String coffeeName, String shopName,
@@ -178,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
             .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
       },
       child: Padding(
-          padding: EdgeInsets.only(left: 15.0, right: 15.0),
+          padding: EdgeInsets.only(right: 15.0),
           child: Container(
               height: 300.0,
               width: 225.0,
@@ -269,6 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+//search bar
 class CustomSearch extends SearchDelegate {
   List<String> allData = [
     'Arabica',

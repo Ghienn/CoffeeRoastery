@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'theme.dart';
+import '../theme.dart';
 
 class CoffeeDetailsPage extends StatefulWidget {
   @override
@@ -41,9 +41,9 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                             top: 20.0,
                             right: 30.0,
                           ),
-                          child: Text("BanCoffee Orginal Light Coffee",
+                          child: Text("NAVIGATOR - OUR BOLD BLEND",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'serifa',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -56,7 +56,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           ),
                           child: Text("Description",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'serifa',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),
@@ -65,9 +65,10 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           padding: EdgeInsets.only(
                               left: 30.0, top: 10, bottom: 10, right: 30),
                           child: Text(
-                              "Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups. Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.",
+                              "In homage to the old school explorers, Navigator is a darker, heavier blend developed to go great with milk. Its deep notes of toffee and bitter chocolate are complimented by a subtle cherry sweetness.\n\nA portion of the sales from Navigator goes to support the Jack Fleckney Foundation, which supports disadvantaged young people.\n\nOrigin: Peru El Oso (washed) / Honduras Liquidambar (washed) / Colombia Caficauca (washed)\n\nProducer: Agraria Frontera San Ignacio Cooperative, Gonzales family, Caficauca Cooperative\n\nVarietal: Bourbon, Catimor, Pache, Typica, Caturra, Lempira\n\nCertification: Organic\n\nBest Results: Espresso",
                               textAlign: TextAlign.justify,
                               style: TextStyle(
+                                  fontFamily: 'opensans',
                                   color: Color.fromARGB(255, 143, 128, 122),
                                   fontWeight: FontWeight.w400,
                                   fontSize: 16)),
