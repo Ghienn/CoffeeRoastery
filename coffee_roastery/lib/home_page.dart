@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.bold),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 15.0),
+              padding: const EdgeInsets.only(right: 20.0),
               child: Text(
                 'See all',
                 style: TextStyle(
@@ -103,14 +103,14 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 350.0,
             child: ListView(scrollDirection: Axis.horizontal, children: [
               _coffeeListCard(
-                  'assets/coffee_product.png',
+                  'assets/coffee2.webp',
                   'Caffe Misto',
                   'Coffeeshop',
                   'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
                   // '\$4.99',
                   false),
               _coffeeListCard(
-                  'assets/motor_city.webp',
+                  'assets/coffee1.webp',
                   'Caffe Latte',
                   'BrownHouse',
                   'Rich, full-bodied espresso with bittersweet milk sauce and steamed milk',
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.bold),
             ),
             const Padding(
-              padding: EdgeInsets.only(right: 15.0),
+              padding: EdgeInsets.only(right: 20.0),
               child: Text(
                 'See all',
                 style: TextStyle(
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontWeight: FontWeight.bold),
             ),
             const Padding(
-              padding: EdgeInsets.only(right: 15.0),
+              padding: EdgeInsets.only(right: 20.0),
               child: Text(
                 'See all',
                 style: TextStyle(

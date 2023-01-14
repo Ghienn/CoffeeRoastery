@@ -43,7 +43,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                           ),
                           child: Text("Acaia Lunar Espresso Scales Black 2021",
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -56,7 +56,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                           ),
                           child: Text("Description",
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),

@@ -43,7 +43,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           ),
                           child: Text("NAVIGATOR - OUR BOLD BLEND",
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -56,7 +56,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           ),
                           child: Text("Description",
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),

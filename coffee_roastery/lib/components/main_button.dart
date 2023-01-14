@@ -25,7 +25,8 @@ class MainButton extends StatelessWidget {
             style: TextStyle(
                 color: Color(0xFFDAB68C),
                 fontWeight: FontWeight.w700,
-                fontSize: 18)),
+                fontSize: 18,
+                fontFamily: 'opensans')),
       ),
     );
   }

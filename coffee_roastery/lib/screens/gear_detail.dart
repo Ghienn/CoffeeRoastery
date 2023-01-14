@@ -42,7 +42,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                           ),
                           child: Text("Black Lelit Bianca V3",
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.textColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -54,7 +54,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                           ),
                           child: Text("About this machine",
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.textColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),
@@ -76,7 +76,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                           child: Text("What's Included",
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                  fontFamily: 'serifa',
+                                  fontFamily: 'opensans',
                                   color: AppTheme.textColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),
@@ -90,7 +90,8 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                               style: TextStyle(
                                   color: Color.fromARGB(255, 197, 188, 184),
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 16)),
+                                  fontSize: 16,
+                                  fontFamily: 'opensans')),
                         ),
                       ],
                     ),

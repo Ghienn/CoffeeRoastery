@@ -12,17 +12,18 @@ class ImageSlider extends StatelessWidget {
       children: [
         Image.asset(
           'assets/logo.png',
-          width: size.width / 1.5,
+          width: size.width / 1.6,
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5.0),
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 2.0),
           child: Text(
             'Coffee so good,\n your taste buds with love',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 28,
+                fontSize: 26,
                 fontWeight: FontWeight.w900,
-                color: AppTheme.textColor),
+                color: AppTheme.textColor,
+                fontFamily: 'opensans'),
           ),
         ),
         const Padding(
@@ -34,9 +35,10 @@ class ImageSlider extends StatelessWidget {
             'The best grain, the finest roast, the most powerful flavor',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: AppTheme.textColor),
+                color: AppTheme.textColor,
+                fontFamily: 'opensans'),
           ),
         ),
       ],
