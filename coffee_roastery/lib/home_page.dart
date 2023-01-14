@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
         const MachineCard(),
         SizedBox(height: 10.0),
         const MachineCard(),
-        SizedBox(height: 10.0),
+        SizedBox(height: 25.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // ignore: prefer_const_literals_to_create_immutables
