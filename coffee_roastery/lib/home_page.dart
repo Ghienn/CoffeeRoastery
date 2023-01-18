@@ -204,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             width: 225.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25.0),
-                                color: Color(0xFFDAB68C)),
+                                color: Color(0xFFB68E72)),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
