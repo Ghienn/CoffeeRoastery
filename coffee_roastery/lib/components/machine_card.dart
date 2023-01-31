@@ -1,4 +1,4 @@
-import 'package:coffee_roastery/screens/gear_detail.dart';
+import 'package:coffee_roastery/screens/machines/gear_detail.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -41,25 +41,13 @@ class MachineCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                   image: const DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/gear5.webp'))),
+                      image: AssetImage('assets/machine1.webp'))),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  // Container(
-                  //   margin: const EdgeInsets.all(8.0),
-                  //   padding:
-                  //       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(8),
-                  //     color: AppTheme.secondaryColor.withOpacity(.7),
-                  //   ),
-                  //   child: const Text(
-                  //     'Discover',
-                  //     style: TextStyle(color: Colors.white, fontSize: 16),
-                  //   ),
-                  // ),
                   const Padding(
                     padding: EdgeInsets.only(top: 15.0, left: 10.0),
                     child: Text(

@@ -1,11 +1,14 @@
 import 'package:coffee_roastery/components/accessories_card.dart';
+import 'package:coffee_roastery/screens/accessories/all_accessories.dart';
+import 'package:coffee_roastery/screens/machines/all_machines.dart';
+import 'package:coffee_roastery/screens/products/all_products.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/coffee_details_page.dart';
+import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
-import 'screens/gear_detail.dart';
+import 'screens/machines/gear_detail.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -63,13 +66,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: 'opensans',
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.textColor)),
+                    color: AppTheme.darkColor)),
             Text('Begins with Energy',
                 style: TextStyle(
                     fontFamily: 'opensans',
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
-                    color: AppTheme.textColor)),
+                    color: AppTheme.darkColor)),
           ],
         ),
         SizedBox(height: 25.0),
@@ -79,21 +82,27 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // ignore: prefer_const_constructors
             Text(
-              'ORGANIC COFFEE',
+              'COFFEE PRODUCTS',
               style: TextStyle(
                   fontFamily: 'opensans',
                   fontSize: 20.0,
-                  color: AppTheme.textColor,
+                  color: AppTheme.darkColor,
                   fontWeight: FontWeight.bold),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: Text(
-                'See all',
-                style: TextStyle(
-                    fontFamily: 'opensans',
-                    fontSize: 16.0,
-                    color: Color(0xFFCEC7C4)),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AllProductsPage()));
+              },
+              child: const Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: Text(
+                  'See all',
+                  style: TextStyle(
+                      fontFamily: 'opensans',
+                      fontSize: 16.0,
+                      color: Color(0xFFCEC7C4)),
+                ),
               ),
             ),
           ],
@@ -101,22 +110,19 @@ class _MyHomePageState extends State<MyHomePage> {
         // SizedBox(height: 15.0),
         Container(
             height: 350.0,
-            child: ListView(scrollDirection: Axis.horizontal, children: [
-              _coffeeListCard(
-                  'assets/coffee2.webp',
-                  'Caffe Misto',
-                  'Coffeeshop',
-                  'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
-                  // '\$4.99',
-                  false),
-              _coffeeListCard(
-                  'assets/coffee1.webp',
-                  'Caffe Latte',
-                  'BrownHouse',
-                  'Rich, full-bodied espresso with bittersweet milk sauce and steamed milk',
-                  // '\$3.99',
-                  false),
-            ])),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 4,
+              itemBuilder: (BuildContext context, int index) {
+                return _coffeeListCard(
+                    'assets/coffee1.webp',
+                    'Caffe Misto',
+                    'Coffeeshop',
+                    'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
+                    // '\$4.99',
+                    false);
+              },
+            )),
         SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -127,17 +133,23 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(
                   fontFamily: 'opensans',
                   fontSize: 20.0,
-                  color: AppTheme.textColor,
+                  color: AppTheme.darkColor,
                   fontWeight: FontWeight.bold),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: Text(
-                'See all',
-                style: TextStyle(
-                    fontFamily: 'opensans',
-                    fontSize: 16.0,
-                    color: Color(0xFFCEC7C4)),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => AllMachinesPage()));
+              },
+              child: const Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: Text(
+                  'See all',
+                  style: TextStyle(
+                      fontFamily: 'opensans',
+                      fontSize: 16.0,
+                      color: Color(0xFFCEC7C4)),
+                ),
               ),
             ),
           ],
@@ -156,17 +168,23 @@ class _MyHomePageState extends State<MyHomePage> {
               style: TextStyle(
                   fontFamily: 'opensans',
                   fontSize: 20.0,
-                  color: AppTheme.textColor,
+                  color: AppTheme.darkColor,
                   fontWeight: FontWeight.bold),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: Text(
-                'See all',
-                style: TextStyle(
-                    fontFamily: 'opensans',
-                    fontSize: 16.0,
-                    color: Color(0xFFCEC7C4)),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => AllAccessoriesPage()));
+              },
+              child: const Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: Text(
+                  'See all',
+                  style: TextStyle(
+                      fontFamily: 'opensans',
+                      fontSize: 16.0,
+                      color: Color(0xFFCEC7C4)),
+                ),
               ),
             ),
           ],
