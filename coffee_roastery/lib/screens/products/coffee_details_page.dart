@@ -97,7 +97,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                         const Padding(
                           padding: EdgeInsets.only(
                             left: 20.0,
-                            top: 20.0,
+                            top: 10.0,
                           ),
                           child: Text("Other Products",
                               style: TextStyle(

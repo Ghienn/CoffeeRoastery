@@ -33,7 +33,7 @@ class _CustomDropdownRowState extends State<CustomDropdownRow> {
               fontFamily: 'SF Pro Display',
               color: AppTheme.darkColor,
               fontWeight: FontWeight.w700,
-              fontSize: 25)),
+              fontSize: 20)),
       initiallyExpanded: initiallyExpanded,
       // tilePadding: EdgeInsets.symmetric(horizontal: maxWidth * 0.048),
       tilePadding: EdgeInsets.symmetric(horizontal: 20),
