@@ -45,7 +45,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           ),
                           child: Text("NAVIGATOR - OUR BOLD BLEND",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -53,7 +53,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: CustomDropdownRow(
-                            title: 'Description',
+                            title: 'Source',
                             componentsList: [
                               CustomRowComponent(
                                   title: 'Bean', value: 'Robusta'),
@@ -62,19 +62,37 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                               CustomRowComponent(
                                   title: 'Altitude', value: '1200-1400 (masl)'),
                               CustomRowComponent(
-                                  title: 'Varietal', value: 'Heirloom'),
-                              CustomRowComponent(
-                                  title: 'Process', value: 'Honey'),
-                              CustomRowComponent(
-                                  title: 'Note', value: 'Nutmeg'),
-                              CustomRowComponent(
-                                  title: 'Roast Date', value: '20/12/2022'),
-                              CustomRowComponent(
-                                  title: 'Purpose', value: 'Espresso'),
-                              CustomRowComponent(title: 'Grade', value: 'G4'),
+                                  title: 'Varietal', value: 'Heirloom')
                             ],
-                            initiallyExpanded: true,
+                            initiallyExpanded: false,
                           ),
+                        ),
+                        CustomDropdownRow(
+                          title: 'Processing Method',
+                          componentsList: [
+                            CustomRowComponent(
+                                title: 'Process', value: 'Honey'),
+                            CustomRowComponent(title: 'Grade', value: 'G4'),
+                          ],
+                          initiallyExpanded: false,
+                        ),
+                        CustomDropdownRow(
+                          title: 'Roast',
+                          componentsList: [
+                            CustomRowComponent(
+                                title: 'Roast Date', value: '20/12/2022'),
+                            CustomRowComponent(
+                                title: 'Roast Purpose', value: 'Espresso'),
+                          ],
+                          initiallyExpanded: false,
+                        ),
+                        CustomDropdownRow(
+                          title: 'Notes',
+                          componentsList: [
+                            CustomRowComponent(
+                                title: 'Note', value: 'Espresso'),
+                          ],
+                          initiallyExpanded: false,
                         ),
                         const Padding(
                           padding: EdgeInsets.only(
@@ -83,7 +101,7 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           ),
                           child: Text("Other Products",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),

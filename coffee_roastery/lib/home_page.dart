@@ -63,13 +63,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text('Morning,',
                 style: TextStyle(
-                    fontFamily: 'opensans',
+                    fontFamily: 'SF Pro Display',
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     color: AppTheme.darkColor)),
             Text('Begins with Energy',
                 style: TextStyle(
-                    fontFamily: 'opensans',
+                    fontFamily: 'SF Pro Display',
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     color: AppTheme.darkColor)),
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'COFFEE PRODUCTS',
               style: TextStyle(
-                  fontFamily: 'opensans',
+                  fontFamily: 'SF Pro Display',
                   fontSize: 20.0,
                   color: AppTheme.darkColor,
                   fontWeight: FontWeight.bold),
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(
                   'See all',
                   style: TextStyle(
-                      fontFamily: 'opensans',
+                      fontFamily: 'SF Pro Display',
                       fontSize: 16.0,
                       color: Color(0xFFCEC7C4)),
                 ),
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'MACHINE GEAR',
               style: TextStyle(
-                  fontFamily: 'opensans',
+                  fontFamily: 'SF Pro Display',
                   fontSize: 20.0,
                   color: AppTheme.darkColor,
                   fontWeight: FontWeight.bold),
@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(
                   'See all',
                   style: TextStyle(
-                      fontFamily: 'opensans',
+                      fontFamily: 'SF Pro Display',
                       fontSize: 16.0,
                       color: Color(0xFFCEC7C4)),
                 ),
@@ -166,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'ACCESSORIES',
               style: TextStyle(
-                  fontFamily: 'opensans',
+                  fontFamily: 'SF Pro Display',
                   fontSize: 20.0,
                   color: AppTheme.darkColor,
                   fontWeight: FontWeight.bold),
@@ -181,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(
                   'See all',
                   style: TextStyle(
-                      fontFamily: 'opensans',
+                      fontFamily: 'SF Pro Display',
                       fontSize: 16.0,
                       color: Color(0xFFCEC7C4)),
                 ),
@@ -234,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     coffeeName,
                                     // ignore: prefer_const_constructors
                                     style: TextStyle(
-                                        fontFamily: 'opensans',
+                                        fontFamily: 'SF Pro Display',
                                         fontSize: 22.0,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
@@ -247,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       // Text(
                                       //   price,
                                       //   style: const TextStyle(
-                                      //       fontFamily: 'opensans',
+                                      //       fontFamily: 'SF Pro Display',
                                       //       fontSize: 16.0,
                                       //       fontWeight: FontWeight.bold,
                                       //       color: Color(0xFF3A4742)),
@@ -259,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           description,
                                           maxLines: 4,
                                           style: const TextStyle(
-                                              fontFamily: 'opensans',
+                                              fontFamily: 'SF Pro Display',
                                               fontSize: 12.0,
                                               // fontWeight: FontWeight.w300,
                                               color: Colors.white),

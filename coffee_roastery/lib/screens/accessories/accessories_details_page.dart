@@ -43,7 +43,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                           ),
                           child: Text("Acaia Lunar Espresso Scales Black 2021",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -56,7 +56,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                           ),
                           child: Text("Description",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),
@@ -68,7 +68,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                               "Reintroducing the essential Lunar scale, now with brand new abilities and features! This includes our latest weighing technology, a faster response time, a built-in Flow-Rate Indicator, USB-C charging, and a brighter display for seamless daily use. The scale still has all the familiar features you love, including several auto-start modes, 0.1 g accuracy, and a rechargeable battery with more than 30 hours of life. Great reliability and accuracy, we use the lunar scales daily to help dial in our espresso extraction ratios, i.e. 2:1 18g dry to 36g wet within 25-30 seconds for our medium roast coffee, from our small batch coffee roastery. The low profile helps with cup clearance on the majority of the espresso machines that we sell here at Bella Barista.",
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: Color.fromARGB(255, 143, 128, 122),
                                   fontWeight: FontWeight.w400,
                                   fontSize: 16)),
@@ -80,7 +80,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                           ),
                           child: Text("Other Products",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),

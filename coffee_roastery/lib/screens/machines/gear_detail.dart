@@ -44,7 +44,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                           ),
                           child: Text("Black Lelit Bianca V3",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.textColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 35)),
@@ -56,7 +56,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                           ),
                           child: Text("About this machine",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.textColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),
@@ -98,7 +98,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                           ),
                           child: Text("Other Products",
                               style: TextStyle(
-                                  fontFamily: 'opensans',
+                                  fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
                                   fontWeight: FontWeight.w700,
                                   fontSize: 25)),

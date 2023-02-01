@@ -30,7 +30,7 @@ class _CustomDropdownRowState extends State<CustomDropdownRow> {
     return ExpansionTile(
       title: Text(title,
           style: const TextStyle(
-              fontFamily: 'opensans',
+              fontFamily: 'SF Pro Display',
               color: AppTheme.darkColor,
               fontWeight: FontWeight.w700,
               fontSize: 25)),

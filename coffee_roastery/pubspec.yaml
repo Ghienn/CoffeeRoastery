@@ -114,3 +114,9 @@ flutter:
         - asset: assets/OpenSans-SemiBold.ttf
         - asset: assets/OpenSans-Regular.ttf
 
+    - family: SF Pro Display
+      fonts:
+        - asset: assets/SFPRODISPLAYBOLD.otf
+        - asset: assets/SFPRODISPLAYMEDIUM.otf
+        - asset: assets/SFPRODISPLAYMEDIUM.otf
+

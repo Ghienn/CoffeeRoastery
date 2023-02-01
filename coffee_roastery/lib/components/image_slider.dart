@@ -23,7 +23,7 @@ class ImageSlider extends StatelessWidget {
                 fontSize: 26,
                 fontWeight: FontWeight.w900,
                 color: AppTheme.textColor,
-                fontFamily: 'opensans'),
+                fontFamily: 'SF Pro Display'),
           ),
         ),
         const Padding(
@@ -38,7 +38,7 @@ class ImageSlider extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 color: AppTheme.textColor,
-                fontFamily: 'opensans'),
+                fontFamily: 'SF Pro Display'),
           ),
         ),
       ],

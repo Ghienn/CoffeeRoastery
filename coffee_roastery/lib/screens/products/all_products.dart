@@ -56,7 +56,7 @@ class _AllProductsPageState extends State<AllProductsPage> {
         child: Text(
           'ALL PRODUCTS',
           style: TextStyle(
-              fontFamily: 'opensans',
+              fontFamily: 'SF Pro Display',
               fontSize: 32.0,
               color: AppTheme.darkColor,
               fontWeight: FontWeight.bold),

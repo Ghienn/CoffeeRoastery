@@ -33,10 +33,10 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
         padding: EdgeInsets.only(left: maxWidth * 0.048),
         child: const Divider(
           height: 1,
-          thickness: 1,
+          thickness: 2,
           indent: 0,
-          endIndent: 0,
-          color: Color(0xFFEFEFF4),
+          endIndent: 20,
+          color: Color.fromARGB(255, 244, 242, 239),
         ),
       ),
       Container(
@@ -48,18 +48,18 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
           children: [
             Text(title,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: AppTheme.darkColor,
+                    color: AppTheme.textColor.withOpacity(0.7),
                     fontSize: 18,
-                    fontFamily: 'opensans',
-                    fontWeight: FontWeight.bold)),
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.w600)),
             Expanded(
               child: TextFormField(
                 textAlign: TextAlign.end,
                 initialValue: value,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontSize: 16,
-                    color: AppTheme.darkColor,
-                    fontFamily: 'opensans'),
+                    fontSize: 18,
+                    color: AppTheme.textColor.withOpacity(0.7),
+                    fontFamily: 'SF Pro Display'),
                 decoration: const InputDecoration(border: InputBorder.none),
                 enabled: enabled,
               ),

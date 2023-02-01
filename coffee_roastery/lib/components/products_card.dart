@@ -57,7 +57,7 @@ class ProductsCard extends StatelessWidget {
                           color: AppTheme.textColor,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'opensans'),
+                          fontFamily: 'SF Pro Display'),
                     ),
                   ),
                 ],

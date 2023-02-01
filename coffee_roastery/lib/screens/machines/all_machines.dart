@@ -56,7 +56,7 @@ class _AllMachinesPageState extends State<AllMachinesPage> {
         child: Text(
           'ALL MACHINES',
           style: TextStyle(
-              fontFamily: 'opensans',
+              fontFamily: 'SF Pro Display',
               fontSize: 32.0,
               color: AppTheme.darkColor,
               fontWeight: FontWeight.bold),

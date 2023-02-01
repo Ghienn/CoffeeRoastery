@@ -55,7 +55,7 @@ class _AllAccessoriesPageState extends State<AllAccessoriesPage> {
         child: Text(
           'ALL ACCESSORIES',
           style: TextStyle(
-              fontFamily: 'opensans',
+              fontFamily: 'SF Pro Display',
               fontSize: 32.0,
               color: AppTheme.darkColor,
               fontWeight: FontWeight.bold),

@@ -26,7 +26,7 @@ class MainButton extends StatelessWidget {
                 color: Color(0xFFDAB68C),
                 fontWeight: FontWeight.w700,
                 fontSize: 18,
-                fontFamily: 'opensans')),
+                fontFamily: 'SF Pro Display')),
       ),
     );
   }
