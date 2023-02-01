@@ -51,7 +51,7 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
                     color: AppTheme.textColor.withOpacity(0.7),
                     fontSize: 18,
                     fontFamily: 'SF Pro Display',
-                    fontWeight: FontWeight.w600)),
+                    fontWeight: FontWeight.w500)),
             Expanded(
               child: TextFormField(
                 textAlign: TextAlign.end,
@@ -59,7 +59,8 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     fontSize: 18,
                     color: AppTheme.textColor.withOpacity(0.7),
-                    fontFamily: 'SF Pro Display'),
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.w500),
                 decoration: const InputDecoration(border: InputBorder.none),
                 enabled: enabled,
               ),
