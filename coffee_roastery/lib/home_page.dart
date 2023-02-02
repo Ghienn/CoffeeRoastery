@@ -1,21 +1,22 @@
 import 'package:coffee_roastery/components/accessories_card.dart';
+import 'package:coffee_roastery/controller/coffee_bean_controller.dart';
+import 'package:coffee_roastery/models/coffee_products.dart';
 import 'package:coffee_roastery/screens/accessories/all_accessories.dart';
 import 'package:coffee_roastery/screens/machines/all_machines.dart';
 import 'package:coffee_roastery/screens/products/all_products.dart';
+import 'package:coffee_roastery/service/api_handler.dart';
 import 'package:coffee_roastery/theme.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
 import 'screens/machines/gear_detail.dart';
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -202,8 +203,8 @@ class _MyHomePageState extends State<MyHomePage> {
       String description, bool isFavorite) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
+        // Navigator.of(context)
+        //     .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
       },
       child: Padding(
           padding: EdgeInsets.only(right: 15.0),
@@ -296,6 +297,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+CoffeeBeanController coffeeBeanController = Get.put(CoffeeBeanController());
 
 //search bar
 class CustomSearch extends SearchDelegate {
