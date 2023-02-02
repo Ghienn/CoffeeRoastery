@@ -1,4 +1,5 @@
 import 'package:coffee_roastery/components/accessories_card.dart';
+import 'package:coffee_roastery/components/coffee_bean_card.dart';
 import 'package:coffee_roastery/controller/coffee_bean_controller.dart';
 import 'package:coffee_roastery/models/coffee_products.dart';
 import 'package:coffee_roastery/screens/accessories/all_accessories.dart';
@@ -16,7 +17,14 @@ import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
 import 'screens/machines/gear_detail.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+final _coffeeBeanController = Get.put(CoffeeBeanController());
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,19 +119,23 @@ class MyHomePage extends StatelessWidget {
         // SizedBox(height: 15.0),
         Container(
             height: 350.0,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 4,
-              itemBuilder: (BuildContext context, int index) {
-                return _coffeeListCard(
-                    'assets/coffee1.webp',
-                    'Caffe Misto',
-                    'Coffeeshop',
-                    'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
-                    // '\$4.99',
-                    false);
-              },
-            )),
+            child: Obx(() => ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _coffeeBeanController.coffeebean.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return CoffeeBeanCard(
+                      coffeeBean: _coffeeBeanController.coffeebean[index]);
+                }))
+            //     return _coffeeListCard(
+            //         'assets/coffee1.webp',
+            //         'Caffe Misto',
+            //         'Coffeeshop',
+            //         'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
+            //         // '\$4.99',
+            //         false);
+            //   },
+            // )),
+            ),
         SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

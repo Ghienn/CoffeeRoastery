@@ -3,7 +3,7 @@ import 'package:coffee_roastery/service/api_handler.dart';
 import 'package:get/get.dart';
 
 class CoffeeBeanController extends GetxController {
-  RxList<CoffeeBean> coffeebean = RxList();
+  RxList<CoffeeBean> coffeebean = <CoffeeBean>[].obs;
   var url =
       "http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/CoffeeBean";
 
