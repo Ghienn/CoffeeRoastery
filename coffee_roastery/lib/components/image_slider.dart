@@ -10,8 +10,12 @@ class ImageSlider extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Image.asset(
-          'assets/logo.png',
+        // Image.asset(
+        //   'assets/logo.png',
+        //   width: size.width / 1.6,
+        // ),
+        SizedBox(
+          height: 280,
           width: size.width / 1.6,
         ),
         const Padding(

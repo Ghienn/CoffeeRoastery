@@ -1,26 +1,21 @@
 class CoffeeBean {
-  CoffeeBean({
-    required this.pictureUrl,
-    required this.description,
-    required this.code,
-  });
+  String? pictureURL;
+  String? description;
+  String? code;
 
-  String pictureUrl;
-  String description;
-  String code;
+  CoffeeBean({this.pictureURL, this.description, this.code});
 
-  factory CoffeeBean.fromJson(Map<String, dynamic> json) => CoffeeBean(
-        pictureUrl: json["PictureURL"],
-        description: json["Description"],
-        code: json["Code"],
-      );
+  CoffeeBean.fromJson(Map<String, dynamic> json) {
+    pictureURL = json['PictureURL'];
+    description = json['Description'];
+    code = json['Code'];
+  }
 
-  Map<String, dynamic> toJson() => {
-        "PictureURL": pictureUrl,
-        "Description": description,
-        "Code": code,
-      };
-
-  static List<CoffeeBean> listFromJson(List<dynamic> list) =>
-      List<CoffeeBean>.from(list.map((x) => CoffeeBean.fromJson(x)));
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['PictureURL'] = this.pictureURL;
+    data['Description'] = this.description;
+    data['Code'] = this.code;
+    return data;
+  }
 }

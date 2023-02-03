@@ -1,11 +1,11 @@
 import 'package:coffee_roastery/components/accessories_card.dart';
 import 'package:coffee_roastery/components/coffee_bean_card.dart';
 import 'package:coffee_roastery/controller/coffee_bean_controller.dart';
-import 'package:coffee_roastery/models/coffee_products.dart';
+import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:coffee_roastery/screens/accessories/all_accessories.dart';
 import 'package:coffee_roastery/screens/machines/all_machines.dart';
 import 'package:coffee_roastery/screens/products/all_products.dart';
-import 'package:coffee_roastery/service/api_handler.dart';
+import 'package:coffee_roastery/service/networking.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -117,25 +117,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         // SizedBox(height: 15.0),
-        Container(
+        SizedBox(
             height: 350.0,
-            child: Obx(() => ListView.builder(
+            child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _coffeeBeanController.coffeebean.length,
+                itemCount: _coffeeBeanController.coffeeBeanList.length,
                 itemBuilder: (BuildContext context, int index) {
+                  print(_coffeeBeanController.coffeeBeanList[index]);
                   return CoffeeBeanCard(
-                      coffeeBean: _coffeeBeanController.coffeebean[index]);
-                }))
-            //     return _coffeeListCard(
-            //         'assets/coffee1.webp',
-            //         'Caffe Misto',
-            //         'Coffeeshop',
-            //         'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
-            //         // '\$4.99',
-            //         false);
-            //   },
-            // )),
-            ),
+                      coffeeBean: _coffeeBeanController.coffeeBeanList[index]);
+                })),
+        // child: ListView.builder(
+        //   itemCount: 5,
+        //   scrollDirection: Axis.horizontal,
+        //   itemBuilder: (context, index) {
+        //     return _coffeeListCard(
+        //         'assets/coffee1.webp',
+        //         'Robusta',
+        //         'Coffeeshop',
+        //         'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
+        //         // '\$4.99',
+        //         false);
+        //   },
+        // ),
+
         SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,6 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => AllAccessoriesPage()));
+                // fetchData();
               },
               child: const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -382,3 +388,11 @@ class CustomSearch extends SearchDelegate {
         }));
   }
 }
+
+// void fetchData() async {
+//   var dio = Dio();
+//   var response = await dio.get(
+//       "http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/CoffeeBean");
+//   print(response.statusCode);
+//   print(response.data);
+// }

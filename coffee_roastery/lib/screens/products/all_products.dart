@@ -2,8 +2,11 @@ import 'package:coffee_roastery/components/accessories_card.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../components/machine_card.dart';
 import '../../components/products_card.dart';
+import '../../controller/coffee_bean_controller.dart';
 import '../../home_page.dart';
 
 class AllProductsPage extends StatefulWidget {
@@ -12,6 +15,7 @@ class AllProductsPage extends StatefulWidget {
 }
 
 class _AllProductsPageState extends State<AllProductsPage> {
+  final _coffeeBeanController = Get.put(CoffeeBeanController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,14 +66,18 @@ class _AllProductsPageState extends State<AllProductsPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      SizedBox(height: 15.0),
-      const ProductsCard(),
-      SizedBox(height: 15.0),
-      const ProductsCard(),
-      SizedBox(height: 15.0),
-      const ProductsCard(),
-      SizedBox(height: 15.0),
-      const ProductsCard(),
+      Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: _coffeeBeanController.coffeeBeanList.length,
+            itemBuilder: (BuildContext context, int index) {
+              print(_coffeeBeanController.coffeeBeanList[index]);
+              return ProductsCard(
+                  coffeeBean: _coffeeBeanController.coffeeBeanList[index]);
+            }),
+      )
     ]));
   }
 }

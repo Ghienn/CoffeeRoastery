@@ -1,19 +1,25 @@
 import 'package:coffee_roastery/models/coffee_bean.dart';
-import 'package:coffee_roastery/service/api_handler.dart';
+import 'package:coffee_roastery/service/networking.dart';
 import 'package:get/get.dart';
+import 'package:coffee_roastery/screens/products/bean_provider.dart';
 
 class CoffeeBeanController extends GetxController {
-  RxList<CoffeeBean> coffeebean = <CoffeeBean>[].obs;
-  var url =
-      "http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/CoffeeBean";
-
-  getCoffeeBean() async {
-    var response = await ApiHandler().getMethod(url);
-
-    if (response.statusCode == 200) {
-      response.data.forEach((element) {
-        coffeebean.add(CoffeeBean.fromJson(element));
-      });
-    }
+  List<CoffeeBean> coffeeBeanList = [];
+  bool isLoading = true;
+  @override
+  void onInit() {
+    PostsProvider().getPostsList(
+      onSuccess: (coffeeBean) {
+        coffeeBeanList.addAll(coffeeBean);
+        isLoading = false;
+        update();
+      },
+      onError: (error) {
+        isLoading = false;
+        update();
+        print("Error");
+      },
+    );
+    super.onInit();
   }
 }
