@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import 'controller/machine_controller.dart';
 import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
 import 'screens/machines/gear_detail.dart';
@@ -22,9 +23,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-final _coffeeBeanController = Get.put(CoffeeBeanController());
-
 class _MyHomePageState extends State<MyHomePage> {
+  final _coffeeBeanController = Get.put(CoffeeBeanController());
+  final _machinesController = Get.put(MachinesController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
         //         false);
         //   },
         // ),
-
         SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,10 +172,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        SizedBox(height: 10.0),
-        const MachineCard(),
-        SizedBox(height: 10.0),
-        const MachineCard(),
+        SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: _machinesController.machinesList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  print(_machinesController.machinesList[index]);
+                  return MachineCard(
+                      machines: _machinesController.machinesList[index]);
+                })),
         SizedBox(height: 25.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

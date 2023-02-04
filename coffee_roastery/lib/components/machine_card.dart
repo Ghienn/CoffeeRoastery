@@ -1,11 +1,12 @@
+import 'package:coffee_roastery/models/machines.dart';
 import 'package:coffee_roastery/screens/machines/gear_detail.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/material.dart';
 
 class MachineCard extends StatelessWidget {
-  const MachineCard({
-    Key? key,
-  }) : super(key: key);
+  final Machines machines;
+
+  const MachineCard({required this.machines});
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +40,19 @@ class MachineCard extends StatelessWidget {
               width: 125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/machine1.webp'))),
+                      image: NetworkImage(machines.pictureURL!))),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 15.0, left: 10.0),
                     child: Text(
-                      'Black Lelit Bianca V3 Dual Boiler Espresso Machine',
+                      machines.description!,
                       maxLines: 3,
                       style: TextStyle(
                           color: AppTheme.textColor,

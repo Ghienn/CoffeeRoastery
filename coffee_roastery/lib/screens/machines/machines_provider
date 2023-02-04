@@ -1,20 +1,20 @@
 import 'package:coffee_roastery/service/api_request.dart';
-import 'package:coffee_roastery/models/coffee_bean.dart';
+import 'package:coffee_roastery/models/machines.dart';
 
-class BeansProvider {
-  void getBeansList({
+class MachinesProvider {
+  void getMachinesList({
     Function()? beforeSend,
-    Function(List<CoffeeBean> coffeeBean)? onSuccess,
+    Function(List<Machines> machine)? onSuccess,
     Function(dynamic error)? onError,
   }) {
     ApiRequest(
             url:
-                'http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/CoffeeBean')
+                'http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/CoffeeTool')
         .get(
       beforeSend: () => {if (beforeSend != null) beforeSend()},
       onSuccess: (data) {
         onSuccess!((data as List)
-            .map((beanJson) => CoffeeBean.fromJson(beanJson))
+            .map((machineJson) => Machines.fromJson(machineJson))
             .toList());
       },
       onError: (error) => {if (onError != null) onError(error)},

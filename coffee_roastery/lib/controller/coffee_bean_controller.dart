@@ -8,8 +8,9 @@ class CoffeeBeanController extends GetxController {
   bool isLoading = true;
   @override
   void onInit() {
-    PostsProvider().getPostsList(
+    BeansProvider().getBeansList(
       onSuccess: (coffeeBean) {
+        coffeeBeanList.clear();
         coffeeBeanList.addAll(coffeeBean);
         isLoading = false;
         update();

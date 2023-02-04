@@ -1,7 +1,9 @@
 import 'package:coffee_roastery/components/accessories_card.dart';
+import 'package:coffee_roastery/controller/machine_controller.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../components/machine_card.dart';
 import '../../home_page.dart';
@@ -12,6 +14,7 @@ class AllMachinesPage extends StatefulWidget {
 }
 
 class _AllMachinesPageState extends State<AllMachinesPage> {
+  final _machinesController = Get.put(MachinesController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,14 +65,18 @@ class _AllMachinesPageState extends State<AllMachinesPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      SizedBox(height: 15.0),
-      const MachineCard(),
-      SizedBox(height: 15.0),
-      const MachineCard(),
-      SizedBox(height: 15.0),
-      const MachineCard(),
-      SizedBox(height: 15.0),
-      const MachineCard(),
+      Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: _machinesController.machinesList.length,
+            itemBuilder: (BuildContext context, int index) {
+              print(_machinesController.machinesList[index]);
+              return MachineCard(
+                  machines: _machinesController.machinesList[index]);
+            }),
+      )
     ]));
   }
 }
