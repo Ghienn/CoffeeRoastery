@@ -173,16 +173,21 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: _machinesController.machinesList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  print(_machinesController.machinesList[index]);
-                  return MachineCard(
-                      machines: _machinesController.machinesList[index]);
-                })),
-        SizedBox(height: 25.0),
+          height: 540,
+          child: ListView.separated(
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(
+                    color: Colors.white,
+                  ),
+              scrollDirection: Axis.vertical,
+              itemCount: 3,
+              itemBuilder: (BuildContext context, int index) {
+                print(_machinesController.machinesList[index]);
+                return MachineCard(
+                    machines: _machinesController.machinesList[index]);
+              }),
+        ),
+        SizedBox(height: 15.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // ignore: prefer_const_literals_to_create_immutables

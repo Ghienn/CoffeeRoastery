@@ -1,15 +1,14 @@
+import 'package:coffee_roastery/controller/coffee_details_controller.dart';
+import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import '../../theme.dart';
 import '../customDropdownRow.dart';
 import '../customRowComponent.dart';
 
-class CoffeeDetailsPage extends StatefulWidget {
-  @override
-  _CoffeeDetailsPageState createState() => _CoffeeDetailsPageState();
-}
-
-class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
+class CoffeeDetailsPage extends StatelessWidget {
+  late final CoffeeProduct coffeeProduct;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,13 +17,15 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
           children: [
             Positioned(
               child: Container(
-                // height: 550.0,
-                // width: double.infinity,
-                child: Image.asset('assets/driven.jpg',
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    width: double.infinity,
-                    fit: BoxFit.cover),
-              ),
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          coffeeProduct.pictureURL!,
+                        ),
+                        fit: BoxFit.cover),
+                  )),
             ),
             DraggableScrollableSheet(
                 initialChildSize: 0.42,
@@ -37,13 +38,13 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                       controller: controller,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(
                             left: 20.0,
                             top: 20.0,
                             right: 30.0,
                           ),
-                          child: Text("NAVIGATOR - OUR BOLD BLEND",
+                          child: Text(coffeeProduct.description!,
                               style: TextStyle(
                                   fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
@@ -56,13 +57,16 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                             title: 'Source',
                             componentsList: [
                               CustomRowComponent(
-                                  title: 'Bean', value: 'Robusta'),
+                                  title: 'Bean', value: coffeeProduct.bean!),
                               CustomRowComponent(
-                                  title: 'Origin', value: 'Colombia'),
+                                  title: 'Origin',
+                                  value: coffeeProduct.origin!),
                               CustomRowComponent(
-                                  title: 'Altitude', value: '1200-1400 (masl)'),
+                                  title: 'Altitude',
+                                  value: coffeeProduct.altitudeFrom!),
                               CustomRowComponent(
-                                  title: 'Varietal', value: 'Heirloom')
+                                  title: 'Varietal',
+                                  value: coffeeProduct.varietal!)
                             ],
                             initiallyExpanded: false,
                           ),
@@ -71,8 +75,10 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           title: 'Processing Method',
                           componentsList: [
                             CustomRowComponent(
-                                title: 'Process', value: 'Honey'),
-                            CustomRowComponent(title: 'Grade', value: 'G4'),
+                                title: 'Process',
+                                value: coffeeProduct.process!),
+                            CustomRowComponent(
+                                title: 'Grade', value: coffeeProduct.grade!),
                           ],
                           initiallyExpanded: false,
                         ),
@@ -80,9 +86,11 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
                           title: 'Roast',
                           componentsList: [
                             CustomRowComponent(
-                                title: 'Roast Date', value: '20/12/2022'),
+                                title: 'Roast Date',
+                                value: coffeeProduct.roastDate!),
                             CustomRowComponent(
-                                title: 'Roast Purpose', value: 'Espresso'),
+                                title: 'Roast Purpose',
+                                value: coffeeProduct.roastPurpose!),
                           ],
                           initiallyExpanded: false,
                         ),
@@ -153,10 +161,10 @@ class _CoffeeDetailsPageState extends State<CoffeeDetailsPage> {
 
   _coffeeProductListCard(String imgPath) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
-      },
+      // onTap: () {
+      //   Navigator.of(context)
+      //       .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
+      // },
       child: Padding(
           padding: EdgeInsets.only(right: 15.0),
           child: Container(

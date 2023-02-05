@@ -68,7 +68,9 @@ class _AllMachinesPageState extends State<AllMachinesPage> {
       Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
+        child: ListView.separated(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(color: Colors.white),
             scrollDirection: Axis.vertical,
             itemCount: _machinesController.machinesList.length,
             itemBuilder: (BuildContext context, int index) {

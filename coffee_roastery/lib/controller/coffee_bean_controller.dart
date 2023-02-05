@@ -1,5 +1,4 @@
 import 'package:coffee_roastery/models/coffee_bean.dart';
-import 'package:coffee_roastery/service/networking.dart';
 import 'package:get/get.dart';
 import 'package:coffee_roastery/screens/products/bean_provider.dart';
 
