@@ -1,5 +1,6 @@
 import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:coffee_roastery/models/coffee_tool.dart';
+import 'package:coffee_roastery/models/note_list.dart';
 import 'package:coffee_roastery/models/product.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -13,8 +14,11 @@ class ApiRequest {
     List<ProductList> products = <ProductList>[];
     List<CoffeeToolList> coffeeTools = <CoffeeToolList>[];
     String requestURL = "${ApiHandler.baseURL}/V1/User";
+    String findURL = "${ApiHandler.baseURL}/V1/FindCoffeeProduct";
     var respond = await ApiHandler.handler.post(requestURL,
         data: {"PhoneNumber": phoneNumber, "Password": password});
+
+    // var findRespond = await ApiHandler.handler.get(findURL, queryParameters: )
 
     if (respond.statusCode == 200) {
       var data = respond.data["Metadata"][0];

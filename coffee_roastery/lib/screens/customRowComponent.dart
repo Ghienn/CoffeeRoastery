@@ -45,6 +45,7 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
         width: maxWidth,
         height: maxHeight * (49 / 812),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(title,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -52,17 +53,19 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
                     fontSize: 18,
                     fontFamily: 'SF Pro Display',
                     fontWeight: FontWeight.w500)),
-            Expanded(
-              child: TextFormField(
-                textAlign: TextAlign.end,
-                initialValue: value,
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontSize: 18,
-                    color: AppTheme.textColor.withOpacity(0.7),
-                    fontFamily: 'SF Pro Display',
-                    fontWeight: FontWeight.w500),
-                decoration: const InputDecoration(border: InputBorder.none),
-                enabled: enabled,
+            Flexible(
+              child: Container(
+                child: Text(
+                  value,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textAlign: TextAlign.end,
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                      color: AppTheme.textColor.withOpacity(0.7),
+                      fontSize: 18,
+                      fontFamily: 'SF Pro Display',
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             )
           ],

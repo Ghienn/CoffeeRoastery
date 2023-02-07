@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:coffee_roastery/controller/coffee_product_controller.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,17 @@ class CoffeeDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> returnNote() {
+      List<String> notes = <String>[];
+      for (var note in coffeeProduct.noteList!) {
+        notes.add(note.noteDescription!);
+      }
+      return notes;
+    }
+
+    List<String> notelist = returnNote();
+    print(notelist);
+
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -106,7 +119,10 @@ class CoffeeDetailsPage extends StatelessWidget {
                           componentsList: [
                             CustomRowComponent(
                                 title: 'Note',
-                                value: 'noteList.noteDescription!'),
+                                value: notelist
+                                    .toString()
+                                    .replaceAll('[', '')
+                                    .replaceAll(']', '')),
                           ],
                           initiallyExpanded: false,
                         ),

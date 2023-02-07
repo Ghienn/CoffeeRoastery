@@ -22,15 +22,10 @@ import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
 import 'screens/machines/gear_detail.dart';
 
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final _coffeeProductController = Get.put(CoffeeProductController());
+class MyHomePage extends StatelessWidget {
   final _productController = Get.put(ProductController());
   final _coffeeToolController = Get.put(CoffeeToolController());
+  final _coffeeProductController = Get.put(CoffeeProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -253,15 +248,12 @@ class _MyHomePageState extends State<MyHomePage> {
 //search bar
 class CustomSearch extends SearchDelegate {
   List<String> allData = [
-    'Arabica',
-    'Culi',
-    'Cherry',
-    'Moka',
-    'Robusta',
-    'Espresso',
-    'Cappuccino',
-    'Macchiato',
-    'Latte'
+    'Cafe Amaratto',
+    'Cafe Cinnamon',
+    'English Caramel',
+    'White Russian',
+    'Dulce De Leche',
+    'Coffee De Luxce'
   ];
 
   @override
