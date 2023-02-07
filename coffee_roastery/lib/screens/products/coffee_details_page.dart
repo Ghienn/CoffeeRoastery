@@ -1,3 +1,4 @@
+import 'package:coffee_roastery/controller/coffee_product_controller.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -6,9 +7,11 @@ import '../../models/note_list.dart';
 import '../../theme.dart';
 import '../customDropdownRow.dart';
 import '../customRowComponent.dart';
+import 'other_coffee_card.dart';
 
 class CoffeeDetailsPage extends StatelessWidget {
   final CoffeeProductList coffeeProduct;
+  final _coffeeProductController = Get.put(CoffeeProductController());
   CoffeeDetailsPage({Key? key, required this.coffeeProduct}) : super(key: key);
 
   @override
@@ -125,10 +128,12 @@ class CoffeeDetailsPage extends StatelessWidget {
                             height: 225.0,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 4,
+                              itemCount: _coffeeProductController
+                                  .coffeeProductsList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return _coffeeProductListCard(
-                                    'https://i.postimg.cc/x1XkHr69/VI-Coffee-Product-1.png');
+                                return OtherCoffeeCard(
+                                    coffeeProductList: _coffeeProductController
+                                        .coffeeProductsList[index]);
                               },
                             ),
                           ),
@@ -161,37 +166,6 @@ class CoffeeDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  _coffeeProductListCard(String imgPath) {
-    return GestureDetector(
-      // onTap: () {
-      //   Navigator.of(context)
-      //       .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
-      // },
-      child: Padding(
-          padding: EdgeInsets.only(right: 15.0),
-          child: Container(
-              height: 200.0,
-              width: 150.0,
-              child: Column(
-                children: <Widget>[
-                  Stack(children: [
-                    Container(height: 200.0),
-                    Positioned(
-                        top: 0.0,
-                        child: Container(
-                            height: 200.0,
-                            width: 150.0,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25.0),
-                                image: DecorationImage(
-                                    image: NetworkImage(imgPath),
-                                    fit: BoxFit.fill))))
-                  ]),
-                ],
-              ))),
     );
   }
 }

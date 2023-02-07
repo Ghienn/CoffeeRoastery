@@ -1,5 +1,7 @@
+import 'package:coffee_roastery/controller/coffee_tool_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
 import '../../theme.dart';
 
 class AccessoriesDetailsPage extends StatefulWidget {
@@ -8,6 +10,7 @@ class AccessoriesDetailsPage extends StatefulWidget {
 }
 
 class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
+  final _coffeeToolController = Get.put(CoffeeToolController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,10 +94,12 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                             height: 225.0,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 4,
+                              itemCount:
+                                  _coffeeToolController.coffeeToolList.length,
                               itemBuilder: (BuildContext context, int index) {
                                 return _accessoriesgearListCard(
-                                    'assets/accessories.webp');
+                                    _coffeeToolController.coffeeToolList[index]
+                                        .pictureFirebase!);
                               },
                             ),
                           ),
@@ -153,7 +158,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25.0),
                                 image: DecorationImage(
-                                    image: AssetImage(imgPath),
+                                    image: NetworkImage(imgPath),
                                     fit: BoxFit.fill))))
                   ]),
                 ],

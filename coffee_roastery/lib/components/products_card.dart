@@ -7,7 +7,7 @@ import '../models/product.dart';
 
 class ProductsCard extends StatelessWidget {
   final CoffeeProductList coffeeProduct;
-  final CoffeeProductList coffeeProduct;
+
   const ProductsCard({required this.coffeeProduct});
 
   @override
@@ -15,10 +15,8 @@ class ProductsCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => CoffeeDetailsPage(
-                  coffeeProduct: coffeeProduct,
-                  noteList: noteList,
-                )));
+            builder: (context) =>
+                CoffeeDetailsPage(coffeeProduct: coffeeProduct)));
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 15),
