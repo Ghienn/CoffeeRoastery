@@ -15,8 +15,10 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => GearDetailsPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => GearDetailsPage(
+                  product: product,
+                )));
       },
       child: Container(
         height: 150,
@@ -53,13 +55,13 @@ class ProductCard extends StatelessWidget {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 15.0, left: 10.0),
+                    padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
                     child: Text(
                       product.description!,
                       maxLines: 3,
                       style: TextStyle(
                           color: AppTheme.textColor,
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'SF Pro Display'),
                     ),

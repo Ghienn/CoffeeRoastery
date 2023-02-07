@@ -16,8 +16,9 @@ class CoffeeToolCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AccessoriesDetailsPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                AccessoriesDetailsPage(coffeeTool: coffeeTool)));
       },
       child: Container(
         height: 150,
@@ -53,13 +54,13 @@ class CoffeeToolCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 15.0, left: 10.0),
+                    padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
                     child: Text(
                       coffeeTool.description!,
                       maxLines: 3,
                       style: TextStyle(
                           color: AppTheme.textColor,
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'SF Pro Display'),
                     ),

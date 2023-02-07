@@ -1,16 +1,17 @@
 import 'package:coffee_roastery/controller/coffee_tool_controller.dart';
+import 'package:coffee_roastery/models/coffee_tool.dart';
+import 'package:coffee_roastery/screens/accessories/other_tool_card.dart';
+import 'package:coffee_roastery/screens/products/other_coffee_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import '../../theme.dart';
 
-class AccessoriesDetailsPage extends StatefulWidget {
-  @override
-  _AccessoriesDetailsPageState createState() => _AccessoriesDetailsPageState();
-}
-
-class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
+class AccessoriesDetailsPage extends StatelessWidget {
+  final CoffeeToolList coffeeTool;
   final _coffeeToolController = Get.put(CoffeeToolController());
+  AccessoriesDetailsPage({Key? key, required this.coffeeTool})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +22,7 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
               child: Container(
                 // height: 550.0,
                 // width: double.infinity,
-                child: Image.asset('assets/accessories.webp',
+                child: Image.network(coffeeTool.pictureFirebase!,
                     height: MediaQuery.of(context).size.height * 0.6,
                     width: double.infinity,
                     fit: BoxFit.cover),
@@ -38,13 +39,13 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                       controller: controller,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(
                             left: 20.0,
                             top: 20.0,
                             right: 30.0,
                           ),
-                          child: Text("Acaia Lunar Espresso Scales Black 2021",
+                          child: Text(coffeeTool.description!,
                               style: TextStyle(
                                   fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,
@@ -97,9 +98,9 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
                               itemCount:
                                   _coffeeToolController.coffeeToolList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return _accessoriesgearListCard(
-                                    _coffeeToolController.coffeeToolList[index]
-                                        .pictureFirebase!);
+                                return OtherToolCard(
+                                    coffeeTool: _coffeeToolController
+                                        .coffeeToolList[index]);
                               },
                             ),
                           ),
@@ -132,37 +133,6 @@ class _AccessoriesDetailsPageState extends State<AccessoriesDetailsPage> {
           ],
         ),
       ),
-    );
-  }
-
-  _accessoriesgearListCard(String imgPath) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => AccessoriesDetailsPage()));
-      },
-      child: Padding(
-          padding: EdgeInsets.only(right: 15.0),
-          child: Container(
-              height: 200.0,
-              width: 150.0,
-              child: Column(
-                children: <Widget>[
-                  Stack(children: [
-                    Container(height: 200.0),
-                    Positioned(
-                        top: 0.0,
-                        child: Container(
-                            height: 200.0,
-                            width: 150.0,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25.0),
-                                image: DecorationImage(
-                                    image: NetworkImage(imgPath),
-                                    fit: BoxFit.fill))))
-                  ]),
-                ],
-              ))),
     );
   }
 }

@@ -1,15 +1,17 @@
+import 'package:coffee_roastery/models/product.dart';
+import 'package:coffee_roastery/screens/machines/other_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:get/get.dart';
+import '../../controller/machine_controller.dart';
 import '../../theme.dart';
 import '../customDropdownRow.dart';
 import '../customRowComponent.dart';
 
-class GearDetailsPage extends StatefulWidget {
-  @override
-  _GearDetailsPageState createState() => _GearDetailsPageState();
-}
-
-class _GearDetailsPageState extends State<GearDetailsPage> {
+class GearDetailsPage extends StatelessWidget {
+  final ProductList product;
+  final _productController = Get.put(ProductController());
+  GearDetailsPage({Key? key, required this.product}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,7 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
               child: Container(
                 // height: 550.0,
                 // width: double.infinity,
-                child: Image.asset('assets/machine1.webp',
+                child: Image.network(product.pictureFirebase!,
                     height: MediaQuery.of(context).size.height * 0.6,
                     width: double.infinity,
                     fit: BoxFit.cover),
@@ -37,12 +39,12 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                       controller: controller,
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(
                             left: 20.0,
                             top: 30.0,
                           ),
-                          child: Text("Black Lelit Bianca V3",
+                          child: Text(product.description!,
                               style: TextStyle(
                                   fontFamily: 'SF Pro Display',
                                   color: AppTheme.textColor,
@@ -109,9 +111,11 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
                             height: 225.0,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: 4,
+                              itemCount: _productController.productsList.length,
                               itemBuilder: (BuildContext context, int index) {
-                                return _gearListCard('assets/machine1.webp');
+                                return OtherProductCard(
+                                    productList:
+                                        _productController.productsList[index]);
                               },
                             ),
                           ),
@@ -144,37 +148,6 @@ class _GearDetailsPageState extends State<GearDetailsPage> {
           ],
         ),
       ),
-    );
-  }
-
-  _gearListCard(String imgPath) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => GearDetailsPage()));
-      },
-      child: Padding(
-          padding: EdgeInsets.only(right: 15.0),
-          child: Container(
-              height: 200.0,
-              width: 150.0,
-              child: Column(
-                children: <Widget>[
-                  Stack(children: [
-                    Container(height: 200.0),
-                    Positioned(
-                        top: 0.0,
-                        child: Container(
-                            height: 200.0,
-                            width: 150.0,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(25.0),
-                                image: DecorationImage(
-                                    image: AssetImage(imgPath),
-                                    fit: BoxFit.fill))))
-                  ]),
-                ],
-              ))),
     );
   }
 }

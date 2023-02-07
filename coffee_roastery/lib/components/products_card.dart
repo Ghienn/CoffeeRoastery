@@ -56,13 +56,14 @@ class ProductsCard extends StatelessWidget {
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 15.0, left: 15.0),
+                      padding:
+                          EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
                       child: Text(
                         coffeeProduct.description!,
                         maxLines: 3,
                         style: TextStyle(
                             color: AppTheme.textColor,
-                            fontSize: 24,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'SF Pro Display'),
                       ),
