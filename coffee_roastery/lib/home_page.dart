@@ -1,10 +1,13 @@
 import 'package:coffee_roastery/components/accessories_card.dart';
 import 'package:coffee_roastery/components/coffee_bean_card.dart';
-import 'package:coffee_roastery/controller/coffee_bean_controller.dart';
+import 'package:coffee_roastery/controller/coffee_product_controller.dart';
+import 'package:coffee_roastery/controller/coffee_tool_controller.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
+import 'package:coffee_roastery/models/coffee_tool.dart';
 import 'package:coffee_roastery/screens/accessories/all_accessories.dart';
 import 'package:coffee_roastery/screens/machines/all_machines.dart';
 import 'package:coffee_roastery/screens/products/all_products.dart';
+import 'package:coffee_roastery/service/api_handler.dart';
 import 'package:coffee_roastery/service/networking.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:dio/dio.dart';
@@ -14,6 +17,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import 'controller/machine_controller.dart';
+import 'models/product.dart';
 import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
 import 'screens/machines/gear_detail.dart';
@@ -24,10 +28,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _coffeeBeanController = Get.put(CoffeeBeanController());
-  final _machinesController = Get.put(MachinesController());
+  final _coffeeProductController = Get.put(CoffeeProductController());
+  final _productController = Get.put(ProductController());
+  final _coffeeToolController = Get.put(CoffeeToolController());
+
   @override
   Widget build(BuildContext context) {
+    ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
+      print(value);
+      List<CoffeeProductList> coffeeProductList =
+          value['coffeeProducts'] ?? <CoffeeProductList>[];
+      List<ProductList> productList = value['products'] ?? <ProductList>[];
+      List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
+      _coffeeProductController.coffeeProductsList.clear();
+      _productController.productsList.clear();
+      _coffeeToolController.coffeeToolList.clear();
+      _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
+      _productController.productsList.addAll(productList);
+      _coffeeToolController.coffeeToolList.addAll(toolList);
+    });
+
     return Scaffold(
         body: ListView(
       padding: EdgeInsets.only(left: 20.0),
@@ -122,25 +142,13 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 350.0,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _coffeeBeanController.coffeeBeanList.length,
+                itemCount: _coffeeProductController.coffeeProductsList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  print(_coffeeBeanController.coffeeBeanList[index]);
-                  return CoffeeBeanCard(
-                      coffeeBean: _coffeeBeanController.coffeeBeanList[index]);
+                  print(_coffeeProductController.coffeeProductsList[index]);
+                  return CoffeeProductCard(
+                      coffeeProduct:
+                          _coffeeProductController.coffeeProductsList[index]);
                 })),
-        // child: ListView.builder(
-        //   itemCount: 5,
-        //   scrollDirection: Axis.horizontal,
-        //   itemBuilder: (context, index) {
-        //     return _coffeeListCard(
-        //         'assets/coffee1.webp',
-        //         'Robusta',
-        //         'Coffeeshop',
-        //         'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
-        //         // '\$4.99',
-        //         false);
-        //   },
-        // ),
         SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               onTap: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => AllMachinesPage()));
+                    MaterialPageRoute(builder: (context) => AllProductPage()));
               },
               child: const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -182,9 +190,9 @@ class _MyHomePageState extends State<MyHomePage> {
               scrollDirection: Axis.vertical,
               itemCount: 3,
               itemBuilder: (BuildContext context, int index) {
-                print(_machinesController.machinesList[index]);
-                return MachineCard(
-                    machines: _machinesController.machinesList[index]);
+                print(_productController.productsList[index]);
+                return ProductCard(
+                    product: _productController.productsList[index]);
               }),
         ),
         SizedBox(height: 15.0),
@@ -204,7 +212,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => AllAccessoriesPage()));
-                // fetchData();
               },
               child: const Padding(
                 padding: EdgeInsets.only(right: 20.0),
@@ -219,11 +226,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
-        SizedBox(height: 10.0),
-        const AccessoriesCard(),
-        SizedBox(height: 10.0),
-        const AccessoriesCard(),
-        SizedBox(height: 10.0),
+        SizedBox(
+          height: 540,
+          child: ListView.separated(
+              separatorBuilder: (BuildContext context, int index) =>
+                  const Divider(
+                    color: Colors.white,
+                  ),
+              scrollDirection: Axis.vertical,
+              itemCount: 3,
+              itemBuilder: (BuildContext context, int index) {
+                print(_coffeeToolController.coffeeToolList[index]);
+                return CoffeeToolCard(
+                    coffeeTool: _coffeeToolController.coffeeToolList[index]);
+              }),
+        ),
       ],
     ));
   }
@@ -274,14 +291,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      // Text(
-                                      //   price,
-                                      //   style: const TextStyle(
-                                      //       fontFamily: 'SF Pro Display',
-                                      //       fontSize: 16.0,
-                                      //       fontWeight: FontWeight.bold,
-                                      //       color: Color(0xFF3A4742)),
-                                      // ),
                                       Container(
                                         height: 50.0,
                                         width: 150.0,
@@ -326,8 +335,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-CoffeeBeanController coffeeBeanController = Get.put(CoffeeBeanController());
 
 //search bar
 class CustomSearch extends SearchDelegate {
@@ -394,7 +401,7 @@ class CustomSearch extends SearchDelegate {
         itemBuilder: ((context, index) {
           var result = matchQuery[index];
           return ListTile(
-            title: Text(result),
+            title: GestureDetector(child: Text(result)),
           );
         }));
   }
@@ -402,8 +409,8 @@ class CustomSearch extends SearchDelegate {
 
 // void fetchData() async {
 //   var dio = Dio();
-//   var response = await dio.get(
-//       "http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/CoffeeBean");
+//   var response = await dio
+//       .get("http://103.157.218.115/CoffeeRoastery/hs/CoffeeRoastery/V1/User");
 //   print(response.statusCode);
-//   print(response.data);
+//   print(response.data["Metadata"]);
 // }

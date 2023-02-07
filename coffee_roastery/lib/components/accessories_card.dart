@@ -2,11 +2,14 @@ import 'package:coffee_roastery/screens/machines/gear_detail.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/material.dart';
 
+import '../models/coffee_tool.dart';
 import '../screens/accessories/accessories_details_page.dart';
 
-class AccessoriesCard extends StatelessWidget {
-  const AccessoriesCard({
+class CoffeeToolCard extends StatelessWidget {
+  final CoffeeToolList coffeeTool;
+  const CoffeeToolCard({
     Key? key,
+    required this.coffeeTool,
   }) : super(key: key);
 
   @override
@@ -41,35 +44,22 @@ class AccessoriesCard extends StatelessWidget {
               width: 125,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(14),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage('assets/accessories.webp'))),
+                      image: NetworkImage(coffeeTool.pictureFirebase!))),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Container(
-                  //   margin: const EdgeInsets.all(8.0),
-                  //   padding:
-                  //       const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  //   decoration: BoxDecoration(
-                  //     borderRadius: BorderRadius.circular(8),
-                  //     color: AppTheme.secondaryColor.withOpacity(.7),
-                  //   ),
-                  //   child: const Text(
-                  //     'Discover',
-                  //     style: TextStyle(color: Colors.white, fontSize: 16),
-                  //   ),
-                  // ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(top: 15.0, left: 10.0),
                     child: Text(
-                      'Eureka Digital Scales with Bluetooth',
+                      coffeeTool.description!,
                       maxLines: 3,
                       style: TextStyle(
                           color: AppTheme.textColor,
-                          fontSize: 16,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'SF Pro Display'),
                     ),

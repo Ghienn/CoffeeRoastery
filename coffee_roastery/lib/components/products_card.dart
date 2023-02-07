@@ -1,20 +1,24 @@
+import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:coffee_roastery/screens/products/coffee_details_page.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/material.dart';
 
-import '../models/coffee_bean.dart';
+import '../models/product.dart';
 
 class ProductsCard extends StatelessWidget {
-  final CoffeeBean coffeeBean;
-
-  const ProductsCard({required this.coffeeBean});
+  final CoffeeProductList coffeeProduct;
+  final CoffeeProductList coffeeProduct;
+  const ProductsCard({required this.coffeeProduct});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => CoffeeDetailsPage(
+                  coffeeProduct: coffeeProduct,
+                  noteList: noteList,
+                )));
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 15),
@@ -45,7 +49,7 @@ class ProductsCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(coffeeBean.pictureURL!),
+                      image: NetworkImage(coffeeProduct.pictureFirebase!),
                     )),
               ),
               Expanded(
@@ -56,7 +60,7 @@ class ProductsCard extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 15.0, left: 15.0),
                       child: Text(
-                        coffeeBean.description!,
+                        coffeeProduct.description!,
                         maxLines: 3,
                         style: TextStyle(
                             color: AppTheme.textColor,

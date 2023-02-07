@@ -2,7 +2,9 @@ import 'package:coffee_roastery/components/accessories_card.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../components/machine_card.dart';
+import '../../controller/coffee_tool_controller.dart';
 import '../../home_page.dart';
 
 class AllAccessoriesPage extends StatefulWidget {
@@ -11,6 +13,7 @@ class AllAccessoriesPage extends StatefulWidget {
 }
 
 class _AllAccessoriesPageState extends State<AllAccessoriesPage> {
+  final _coffeeToolController = Get.put(CoffeeToolController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,14 +64,20 @@ class _AllAccessoriesPageState extends State<AllAccessoriesPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      SizedBox(height: 15.0),
-      const AccessoriesCard(),
-      SizedBox(height: 15.0),
-      const AccessoriesCard(),
-      SizedBox(height: 15.0),
-      const AccessoriesCard(),
-      SizedBox(height: 15.0),
-      const AccessoriesCard(),
+      Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: ListView.separated(
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(color: Colors.white),
+            scrollDirection: Axis.vertical,
+            itemCount: _coffeeToolController.coffeeToolList.length,
+            itemBuilder: (BuildContext context, int index) {
+              print(_coffeeToolController.coffeeToolList[index]);
+              return CoffeeToolCard(
+                  coffeeTool: _coffeeToolController.coffeeToolList[index]);
+            }),
+      )
     ]));
   }
 }

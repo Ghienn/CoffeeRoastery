@@ -1,14 +1,16 @@
-import 'package:coffee_roastery/controller/coffee_details_controller.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
+import '../../models/note_list.dart';
 import '../../theme.dart';
 import '../customDropdownRow.dart';
 import '../customRowComponent.dart';
 
 class CoffeeDetailsPage extends StatelessWidget {
-  late final CoffeeProduct coffeeProduct;
+  final CoffeeProductList coffeeProduct;
+  CoffeeDetailsPage({Key? key, required this.coffeeProduct}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class CoffeeDetailsPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                          coffeeProduct.pictureURL!,
+                          coffeeProduct.pictureFirebase!,
                         ),
                         fit: BoxFit.cover),
                   )),
@@ -62,8 +64,11 @@ class CoffeeDetailsPage extends StatelessWidget {
                                   title: 'Origin',
                                   value: coffeeProduct.origin!),
                               CustomRowComponent(
+                                  title: 'Farm', value: coffeeProduct.farm!),
+                              CustomRowComponent(
                                   title: 'Altitude',
-                                  value: coffeeProduct.altitudeFrom!),
+                                  value:
+                                      '${coffeeProduct.altitudeFrom!} - ${coffeeProduct.altitudeTo!}'),
                               CustomRowComponent(
                                   title: 'Varietal',
                                   value: coffeeProduct.varietal!)
@@ -75,8 +80,7 @@ class CoffeeDetailsPage extends StatelessWidget {
                           title: 'Processing Method',
                           componentsList: [
                             CustomRowComponent(
-                                title: 'Process',
-                                value: coffeeProduct.process!),
+                                title: 'Process', value: 'Honey'),
                             CustomRowComponent(
                                 title: 'Grade', value: coffeeProduct.grade!),
                           ],
@@ -98,7 +102,8 @@ class CoffeeDetailsPage extends StatelessWidget {
                           title: 'Notes',
                           componentsList: [
                             CustomRowComponent(
-                                title: 'Note', value: 'Espresso'),
+                                title: 'Note',
+                                value: 'noteList.noteDescription!'),
                           ],
                           initiallyExpanded: false,
                         ),
@@ -123,7 +128,7 @@ class CoffeeDetailsPage extends StatelessWidget {
                               itemCount: 4,
                               itemBuilder: (BuildContext context, int index) {
                                 return _coffeeProductListCard(
-                                    'assets/driven.jpg');
+                                    'https://i.postimg.cc/x1XkHr69/VI-Coffee-Product-1.png');
                               },
                             ),
                           ),
@@ -182,7 +187,7 @@ class CoffeeDetailsPage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25.0),
                                 image: DecorationImage(
-                                    image: AssetImage(imgPath),
+                                    image: NetworkImage(imgPath),
                                     fit: BoxFit.fill))))
                   ]),
                 ],

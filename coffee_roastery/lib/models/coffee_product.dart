@@ -1,86 +1,73 @@
-class CoffeeProduct {
-  String? varietal;
-  String? roastPurpose;
-  String? origin;
-  String? grade;
-  String? altitudeFrom;
-  String? process;
-  String? bean;
-  String? roastDate;
-  String? pictureURL;
-  String? description;
-  List<NoteList>? noteList;
+import 'note_list.dart';
+
+class CoffeeProductList {
   String? code;
+  String? description;
+  String? farm;
+  String? pictureFirebase;
+  String? bean;
+  String? roastPurpose;
+  String? roastDate;
+  String? grade;
+  String? origin;
+  String? varietal;
+  int? altitudeFrom;
+  int? altitudeTo;
+  List<NoteList>? noteList;
 
-  CoffeeProduct(
-      {this.varietal,
-      this.roastPurpose,
-      this.origin,
-      this.grade,
-      this.altitudeFrom,
-      this.process,
-      this.bean,
-      this.roastDate,
-      this.pictureURL,
+  CoffeeProductList(
+      {this.code,
       this.description,
-      this.noteList,
-      this.code});
+      this.farm,
+      this.pictureFirebase,
+      this.bean,
+      this.roastPurpose,
+      this.roastDate,
+      this.grade,
+      this.origin,
+      this.varietal,
+      this.altitudeFrom,
+      this.altitudeTo,
+      this.noteList});
 
-  CoffeeProduct.fromJson(Map<String, dynamic> json) {
-    varietal = json['Varietal'];
-    roastPurpose = json['RoastPurpose'];
-    origin = json['Origin'];
-    grade = json['Grade'];
-    altitudeFrom = json['AltitudeFrom'];
-    process = json['Process'];
-    bean = json['Bean'];
-    roastDate = json['RoastDate'];
-    pictureURL = json['PictureURL'];
+  CoffeeProductList.fromJson(Map<String, dynamic> json) {
+    code = json['Code'];
     description = json['Description'];
+    farm = json['Farm'];
+    pictureFirebase = json['PictureFirebase'];
+    bean = json['Bean'];
+    roastPurpose = json['RoastPurpose'];
+    roastDate = json['RoastDate'];
+    grade = json['Grade'];
+    origin = json['Origin'];
+    varietal = json['Varietal'];
+    altitudeFrom = json['AltitudeFrom'];
+    altitudeTo = json['AltitudeTo'];
     if (json['NoteList'] != null) {
       noteList = <NoteList>[];
       json['NoteList'].forEach((v) {
         noteList!.add(new NoteList.fromJson(v));
       });
     }
-    code = json['Code'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Varietal'] = this.varietal;
-    data['RoastPurpose'] = this.roastPurpose;
-    data['Origin'] = this.origin;
-    data['Grade'] = this.grade;
-    data['AltitudeFrom'] = this.altitudeFrom;
-    data['Process'] = this.process;
-    data['Bean'] = this.bean;
-    data['RoastDate'] = this.roastDate;
-    data['PictureURL'] = this.pictureURL;
+    data['Code'] = this.code;
     data['Description'] = this.description;
+    data['Farm'] = this.farm;
+    data['PictureFirebase'] = this.pictureFirebase;
+    data['Bean'] = this.bean;
+    data['RoastPurpose'] = this.roastPurpose;
+    data['RoastDate'] = this.roastDate;
+    data['Grade'] = this.grade;
+    data['Origin'] = this.origin;
+    data['Varietal'] = this.varietal;
+    data['AltitudeFrom'] = this.altitudeFrom;
+    data['AltitudeTo'] = this.altitudeTo;
     if (this.noteList != null) {
       data['NoteList'] = this.noteList!.map((v) => v.toJson()).toList();
     }
-    data['Code'] = this.code;
-    return data;
-  }
-}
-
-class NoteList {
-  String? description;
-  String? code;
-
-  NoteList({this.description, this.code});
-
-  NoteList.fromJson(Map<String, dynamic> json) {
-    description = json['Description'];
-    code = json['Code'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Description'] = this.description;
-    data['Code'] = this.code;
     return data;
   }
 }

@@ -1,12 +1,15 @@
-import 'package:coffee_roastery/models/machines.dart';
+import 'package:coffee_roastery/models/coffee_product.dart';
+import 'package:coffee_roastery/models/coffee_tool.dart';
 import 'package:coffee_roastery/screens/machines/gear_detail.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/material.dart';
 
-class MachineCard extends StatelessWidget {
-  final Machines machines;
+import '../models/product.dart';
 
-  const MachineCard({required this.machines});
+class ProductCard extends StatelessWidget {
+  final ProductList product;
+
+  const ProductCard({required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class MachineCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                   image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(machines.pictureURL!))),
+                      image: NetworkImage(product.pictureFirebase!))),
             ),
             Expanded(
               child: Column(
@@ -52,11 +55,11 @@ class MachineCard extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 15.0, left: 10.0),
                     child: Text(
-                      machines.description!,
+                      product.description!,
                       maxLines: 3,
                       style: TextStyle(
                           color: AppTheme.textColor,
-                          fontSize: 16,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'SF Pro Display'),
                     ),

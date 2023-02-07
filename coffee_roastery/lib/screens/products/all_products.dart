@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../components/machine_card.dart';
 import '../../components/products_card.dart';
-import '../../controller/coffee_bean_controller.dart';
+import '../../controller/coffee_product_controller.dart';
 import '../../home_page.dart';
 
 class AllProductsPage extends StatefulWidget {
@@ -15,7 +15,7 @@ class AllProductsPage extends StatefulWidget {
 }
 
 class _AllProductsPageState extends State<AllProductsPage> {
-  final _coffeeBeanController = Get.put(CoffeeBeanController());
+  final _coffeeBeanController = Get.put(CoffeeProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,11 +71,12 @@ class _AllProductsPageState extends State<AllProductsPage> {
         width: MediaQuery.of(context).size.width,
         child: ListView.builder(
             scrollDirection: Axis.vertical,
-            itemCount: _coffeeBeanController.coffeeBeanList.length,
+            itemCount: _coffeeBeanController.coffeeProductsList.length,
             itemBuilder: (BuildContext context, int index) {
-              print(_coffeeBeanController.coffeeBeanList[index]);
+              print(_coffeeBeanController.coffeeProductsList[index]);
               return ProductsCard(
-                  coffeeBean: _coffeeBeanController.coffeeBeanList[index]);
+                  coffeeProduct:
+                      _coffeeBeanController.coffeeProductsList[index]);
             }),
       )
     ]));

@@ -1,7 +1,13 @@
 import 'package:coffee_roastery/screens/splash_screen.dart';
+import 'package:coffee_roastery/service/networking.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await ApiHandler.initApiHanler();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

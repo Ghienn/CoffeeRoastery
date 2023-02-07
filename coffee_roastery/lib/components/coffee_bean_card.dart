@@ -1,14 +1,15 @@
-import 'package:coffee_roastery/models/coffee_bean.dart';
+import 'package:coffee_roastery/models/coffee_product.dart';
+import 'package:coffee_roastery/models/product.dart';
 import 'package:coffee_roastery/theme.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/products/coffee_details_page.dart';
 import '../service/networking.dart';
 
-class CoffeeBeanCard extends StatelessWidget {
-  final CoffeeBean coffeeBean;
+class CoffeeProductCard extends StatelessWidget {
+  final CoffeeProductList coffeeProduct;
 
-  const CoffeeBeanCard({required this.coffeeBean});
+  const CoffeeProductCard({required this.coffeeProduct});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +17,9 @@ class CoffeeBeanCard extends StatelessWidget {
       height: 350.0,
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => CoffeeDetailsPage()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) =>
+                  CoffeeDetailsPage(coffeeProduct: coffeeProduct)));
         },
         child: Padding(
             padding: EdgeInsets.only(right: 15.0),
@@ -45,7 +47,7 @@ class CoffeeBeanCard extends StatelessWidget {
                                       height: 150.0,
                                     ),
                                     Text(
-                                      coffeeBean.description!,
+                                      coffeeProduct.description!,
                                       // ignore: prefer_const_constructors
                                       style: TextStyle(
                                           fontFamily: 'SF Pro Display',
@@ -94,8 +96,8 @@ class CoffeeBeanCard extends StatelessWidget {
                               width: 230.0,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          NetworkImage(coffeeBean.pictureURL!),
+                                      image: NetworkImage(
+                                          coffeeProduct.pictureFirebase!),
                                       fit: BoxFit.contain))))
                     ]),
                   ],

@@ -8,13 +8,13 @@ import 'package:get/get.dart';
 import '../../components/machine_card.dart';
 import '../../home_page.dart';
 
-class AllMachinesPage extends StatefulWidget {
+class AllProductPage extends StatefulWidget {
   @override
-  _AllMachinesPageState createState() => _AllMachinesPageState();
+  _AllProductPageState createState() => _AllProductPageState();
 }
 
-class _AllMachinesPageState extends State<AllMachinesPage> {
-  final _machinesController = Get.put(MachinesController());
+class _AllProductPageState extends State<AllProductPage> {
+  final _productController = Get.put(ProductController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,11 +72,11 @@ class _AllMachinesPageState extends State<AllMachinesPage> {
             separatorBuilder: (BuildContext context, int index) =>
                 const Divider(color: Colors.white),
             scrollDirection: Axis.vertical,
-            itemCount: _machinesController.machinesList.length,
+            itemCount: _productController.productsList.length,
             itemBuilder: (BuildContext context, int index) {
-              print(_machinesController.machinesList[index]);
-              return MachineCard(
-                  machines: _machinesController.machinesList[index]);
+              print(_productController.productsList[index]);
+              return ProductCard(
+                  product: _productController.productsList[index]);
             }),
       )
     ]));
