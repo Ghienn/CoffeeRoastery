@@ -47,12 +47,13 @@ class ApiRequest {
     };
   }
 
-  static Future<Map<String, dynamic>> findCoffeeProduct(String key) async {
+  static Future<List<CoffeeProductList>> findCoffeeProduct(
+      @required String code) async {
     List<CoffeeProductList> coffeeProducts1 = <CoffeeProductList>[];
     String findURL = "${ApiHandler.baseURL}/V1/FindCoffeeProduct";
 
     var findRespond = await ApiHandler.handler
-        .get(findURL, queryParameters: {"SerialNumber": key});
+        .get(findURL, queryParameters: {"SerialNumber": code});
 
     if (findRespond.statusCode == 200) {
       var findData = findRespond.data;
@@ -63,8 +64,6 @@ class ApiRequest {
         coffeeProducts1.add(CoffeeProductList.fromJson(findCoffeeProductData));
       }
     }
-    return {
-      "coffeeProducts": coffeeProducts1,
-    };
+    return coffeeProducts1;
   }
 }
