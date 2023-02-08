@@ -15,6 +15,7 @@ class AllProductPage extends StatefulWidget {
 
 class _AllProductPageState extends State<AllProductPage> {
   final _productController = Get.put(ProductController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,20 +66,22 @@ class _AllProductPageState extends State<AllProductPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ListView.separated(
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(color: Colors.white),
-            scrollDirection: Axis.vertical,
-            itemCount: _productController.productsList.length,
-            itemBuilder: (BuildContext context, int index) {
-              print(_productController.productsList[index]);
-              return ProductCard(
-                  product: _productController.productsList[index]);
-            }),
-      )
+      ...List.generate(_productController.productsList.length, (index) {
+        return ProductCard(product: _productController.productsList[index]);
+      }),
+      SizedBox(
+        height: 30,
+      ),
+
+      // ListView.separated(
+      //     separatorBuilder: (BuildContext context, int index) =>
+      //         const Divider(color: Colors.white),
+      //     scrollDirection: Axis.vertical,
+      //     itemCount: _productController.productsList.length,
+      //     itemBuilder: (BuildContext context, int index) {
+      //       print(_productController.productsList[index]);
+      //       return ProductCard(product: _productController.productsList[index]);
+      //     })
     ]));
   }
 }

@@ -14,26 +14,27 @@ class ApiRequest {
     List<ProductList> products = <ProductList>[];
     List<CoffeeToolList> coffeeTools = <CoffeeToolList>[];
     String requestURL = "${ApiHandler.baseURL}/V1/User";
-    String findURL = "${ApiHandler.baseURL}/V1/FindCoffeeProduct";
+
     var respond = await ApiHandler.handler.post(requestURL,
         data: {"PhoneNumber": phoneNumber, "Password": password});
-
-    // var findRespond = await ApiHandler.handler.get(findURL, queryParameters: )
 
     if (respond.statusCode == 200) {
       var data = respond.data["Metadata"][0];
       print(data);
-      //set Dog List
+
+      //set Coffee List
       var coffeeProductList = data['CoffeeProductList'];
       for (var coffeeProductData in coffeeProductList) {
-        CoffeeProductList dog = CoffeeProductList.fromJson(coffeeProductData);
-        coffeeProducts.add(dog);
+        CoffeeProductList coffeeProduct =
+            CoffeeProductList.fromJson(coffeeProductData);
+        coffeeProducts.add(coffeeProduct);
       }
+      //set Machines List
       var productList = data['ProductList'];
       for (var productData in productList) {
         products.add(ProductList.fromJson(productData));
       }
-
+      //set CoffeeTool List
       var coffeeToolsList = data['CoffeeToolList'];
       for (var toolData in coffeeToolsList) {
         coffeeTools.add(CoffeeToolList.fromJson(toolData));
@@ -43,6 +44,27 @@ class ApiRequest {
       "coffeeProducts": coffeeProducts,
       "products": products,
       "tools": coffeeTools,
+    };
+  }
+
+  static Future<Map<String, dynamic>> findCoffeeProduct(String key) async {
+    List<CoffeeProductList> coffeeProducts1 = <CoffeeProductList>[];
+    String findURL = "${ApiHandler.baseURL}/V1/FindCoffeeProduct";
+
+    var findRespond = await ApiHandler.handler
+        .get(findURL, queryParameters: {"SerialNumber": key});
+
+    if (findRespond.statusCode == 200) {
+      var findData = findRespond.data;
+      print(findData);
+      //Set Find Coffee List
+      var findCoffeeProductList = findData;
+      for (var findCoffeeProductData in findCoffeeProductList) {
+        coffeeProducts1.add(CoffeeProductList.fromJson(findCoffeeProductData));
+      }
+    }
+    return {
+      "coffeeProducts": coffeeProducts1,
     };
   }
 }

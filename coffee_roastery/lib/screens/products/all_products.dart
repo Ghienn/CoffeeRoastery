@@ -10,6 +10,7 @@ import '../../components/products_card.dart';
 import '../../controller/coffee_product_controller.dart';
 import '../../home_page.dart';
 import '../../models/coffee_product.dart';
+import '../../service/api_handler.dart';
 
 class AllProductsPage extends StatefulWidget {
   @override
@@ -17,9 +18,16 @@ class AllProductsPage extends StatefulWidget {
 }
 
 class _AllProductsPageState extends State<AllProductsPage> {
-  final _coffeeBeanController = Get.put(CoffeeProductController());
+  final _coffeeProductController = Get.put(CoffeeProductController());
   @override
   Widget build(BuildContext context) {
+    // ApiRequest.findCoffeeProduct("000000002").then((value) {
+    //   print(value);
+    //   List<CoffeeProductList> coffeeProductList1 =
+    //       value['coffeeProducts'] ?? <CoffeeProductList>[];
+    //   _coffeeProductController.coffeeProductsList.clear();
+    //   _coffeeProductController.coffeeProductsList.addAll(coffeeProductList1);
+    // });
     return Scaffold(
         body: ListView(padding: EdgeInsets.only(left: 20.0), children: <Widget>[
       SizedBox(height: 50.0),
@@ -68,19 +76,81 @@ class _AllProductsPageState extends State<AllProductsPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: _coffeeBeanController.coffeeProductsList.length,
-            itemBuilder: (BuildContext context, int index) {
-              print(_coffeeBeanController.coffeeProductsList[index]);
-              return ProductsCard(
-                  coffeeProduct:
-                      _coffeeBeanController.coffeeProductsList[index]);
-            }),
+      ...List.generate(_coffeeProductController.coffeeProductsList.length,
+          (index) {
+        return ProductsCard(
+            coffeeProduct: _coffeeProductController.coffeeProductsList[index]);
+      }),
+      SizedBox(
+        height: 30,
       )
     ]));
+  }
+}
+
+class CustomSearch extends SearchDelegate {
+  List<String> allData = [
+    'Cafe Amaratto',
+    'Cafe Cinnamon',
+    'English Caramel',
+    'White Russian',
+    'Dulce De Leche',
+    'Coffee De Luxce'
+  ];
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+          onPressed: () {
+            query = '';
+          },
+          icon: Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          close(context, null);
+        },
+        icon: Icon(Icons.arrow_back_ios));
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var item in allData) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(item);
+      }
+    }
+    return ListView.builder(
+        itemCount: matchQuery.length,
+        itemBuilder: ((context, index) {
+          var result = matchQuery[index];
+          return ListTile(
+            title: Text(result),
+          );
+        }));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var item in allData) {
+      if (item.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(item);
+      }
+    }
+    return ListView.builder(
+        itemCount: matchQuery.length,
+        itemBuilder: ((context, index) {
+          var result = matchQuery[index];
+          return ListTile(
+            title: GestureDetector(child: Text(result)),
+          );
+        }));
   }
 }

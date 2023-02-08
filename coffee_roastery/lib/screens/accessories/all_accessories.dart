@@ -64,19 +64,12 @@ class _AllAccessoriesPageState extends State<AllAccessoriesPage> {
               fontWeight: FontWeight.bold),
         ),
       ),
-      Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ListView.separated(
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(color: Colors.white),
-            scrollDirection: Axis.vertical,
-            itemCount: _coffeeToolController.coffeeToolList.length,
-            itemBuilder: (BuildContext context, int index) {
-              print(_coffeeToolController.coffeeToolList[index]);
-              return CoffeeToolCard(
-                  coffeeTool: _coffeeToolController.coffeeToolList[index]);
-            }),
+      ...List.generate(_coffeeToolController.coffeeToolList.length, (index) {
+        return CoffeeToolCard(
+            coffeeTool: _coffeeToolController.coffeeToolList[index]);
+      }),
+      SizedBox(
+        height: 30,
       )
     ]));
   }

@@ -20,55 +20,59 @@ class CoffeeToolCard extends StatelessWidget {
             builder: (context) =>
                 AccessoriesDetailsPage(coffeeTool: coffeeTool)));
       },
-      child: Container(
-        height: 150,
-        width: 400.0,
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 8,
-              offset: const Offset(3, 5),
-            ),
-          ],
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(25.0),
-        ),
-        padding: EdgeInsets.all(4),
-        margin: const EdgeInsets.only(right: 20.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.all(6.0),
-              width: 125,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(coffeeTool.pictureFirebase!))),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
-                    child: Text(
-                      coffeeTool.description!,
-                      maxLines: 3,
-                      style: TextStyle(
-                          color: AppTheme.textColor,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'SF Pro Display'),
-                    ),
-                  ),
-                ],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 15.0),
+        child: Container(
+          height: 150,
+          width: 400.0,
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 3,
+                blurRadius: 8,
+                offset: const Offset(3, 5),
               ),
-            )
-          ],
+            ],
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(25.0),
+          ),
+          padding: EdgeInsets.all(4),
+          margin: const EdgeInsets.only(right: 20.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: const EdgeInsets.all(6.0),
+                width: 125,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(coffeeTool.pictureFirebase!))),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
+                      child: Text(
+                        coffeeTool.description!,
+                        maxLines: 3,
+                        style: TextStyle(
+                            color: AppTheme.textColor,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'SF Pro Display'),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

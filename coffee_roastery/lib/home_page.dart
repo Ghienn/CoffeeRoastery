@@ -176,22 +176,9 @@ class MyHomePage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 15),
-          SizedBox(
-            height: 500,
-            child: ListView.separated(
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(
-                      color: Colors.white,
-                    ),
-                scrollDirection: Axis.vertical,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  print(_productController.productsList[index]);
-                  return ProductCard(
-                      product: _productController.productsList[index]);
-                }),
-          ),
+          ...List.generate(3, (index) {
+            return ProductCard(product: _productController.productsList[index]);
+          }),
           SizedBox(height: 15.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -223,22 +210,11 @@ class MyHomePage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 15),
-          SizedBox(
-            height: 500,
-            child: ListView.separated(
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(
-                      color: Colors.white,
-                    ),
-                scrollDirection: Axis.vertical,
-                itemCount: 3,
-                itemBuilder: (BuildContext context, int index) {
-                  print(_coffeeToolController.coffeeToolList[index]);
-                  return CoffeeToolCard(
-                      coffeeTool: _coffeeToolController.coffeeToolList[index]);
-                }),
-          ),
+          ...List.generate(3, (index) {
+            return CoffeeToolCard(
+                coffeeTool: _coffeeToolController.coffeeToolList[index]);
+          }),
+          SizedBox(height: 30)
         ],
       ),
     ));
