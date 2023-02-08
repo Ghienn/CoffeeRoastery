@@ -49,7 +49,7 @@ class _AllProductsPageState extends State<AllProductsPage> {
             padding: EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                showSearch(context: context, delegate: CustomSearch());
+                // showSearch(context: context, delegate: CustomSearch());
               },
               child: Container(
                 height: 30.0,
@@ -85,72 +85,5 @@ class _AllProductsPageState extends State<AllProductsPage> {
         height: 30,
       )
     ]));
-  }
-}
-
-class CustomSearch extends SearchDelegate {
-  List<String> allData = [
-    'Cafe Amaratto',
-    'Cafe Cinnamon',
-    'English Caramel',
-    'White Russian',
-    'Dulce De Leche',
-    'Coffee De Luxce'
-  ];
-
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-          onPressed: () {
-            query = '';
-          },
-          icon: Icon(Icons.clear))
-    ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-        onPressed: () {
-          close(context, null);
-        },
-        icon: Icon(Icons.arrow_back_ios));
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var item in allData) {
-      if (item.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(item);
-      }
-    }
-    return ListView.builder(
-        itemCount: matchQuery.length,
-        itemBuilder: ((context, index) {
-          var result = matchQuery[index];
-          return ListTile(
-            title: Text(result),
-          );
-        }));
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for (var item in allData) {
-      if (item.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(item);
-      }
-    }
-    return ListView.builder(
-        itemCount: matchQuery.length,
-        itemBuilder: ((context, index) {
-          var result = matchQuery[index];
-          return ListTile(
-            title: GestureDetector(child: Text(result)),
-          );
-        }));
   }
 }

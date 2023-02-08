@@ -78,7 +78,8 @@ class MyHomePage extends StatelessWidget {
                       //         setState(() => searchValue = value),
                       //     suggestions: _suggestions);
                       // showSearch(context: context, delegate: CustomSearch());
-                      Get.to(SearchPage());
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => SearchPage()));
                     },
                     child: Container(
                       height: 30.0,
