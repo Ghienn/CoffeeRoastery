@@ -57,12 +57,14 @@ class CoffeeDetailsPage extends StatelessWidget {
                       // ignore: prefer_const_literals_to_create_immutables
                       children: [
                         Padding(
+                          // ignore: prefer_const_constructors
                           padding: EdgeInsets.only(
                             left: 20.0,
                             top: 20.0,
                             right: 30.0,
                           ),
                           child: Text(coffeeProduct.description!,
+                              // ignore: prefer_const_constructors
                               style: TextStyle(
                                   fontFamily: 'SF Pro Display',
                                   color: AppTheme.darkColor,

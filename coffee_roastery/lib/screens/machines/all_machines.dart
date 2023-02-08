@@ -19,70 +19,75 @@ class _AllProductPageState extends State<AllProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(padding: EdgeInsets.only(left: 20.0), children: <Widget>[
-      SizedBox(height: 50.0),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
-              padding: EdgeInsets.only(left: 0.0),
-              child: Container(
-                height: 30.0,
-                width: 30.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                      image: AssetImage('assets/menu.png'), fit: BoxFit.cover),
-                ),
-              )),
-          Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                showSearch(context: context, delegate: CustomSearch());
-              },
-              child: Container(
-                height: 30.0,
-                width: 30.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: DecorationImage(
-                      image: AssetImage('assets/search.png'),
-                      fit: BoxFit.cover),
+        body: SafeArea(
+      child: ListView(padding: EdgeInsets.only(left: 20.0), children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(top: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Padding(
+                  padding: EdgeInsets.only(left: 0.0),
+                  child: Container(
+                    height: 30.0,
+                    width: 30.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      image: DecorationImage(
+                          image: AssetImage('assets/menu.png'),
+                          fit: BoxFit.cover),
+                    ),
+                  )),
+              Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: () {
+                    showSearch(context: context, delegate: CustomSearch());
+                  },
+                  child: Container(
+                    height: 30.0,
+                    width: 30.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      image: DecorationImage(
+                          image: AssetImage('assets/search.png'),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-      Padding(
-        padding: const EdgeInsets.only(top: 10.0),
-        child: Text(
-          'ALL MACHINES',
-          style: TextStyle(
-              fontFamily: 'SF Pro Display',
-              fontSize: 32.0,
-              color: AppTheme.darkColor,
-              fontWeight: FontWeight.bold),
         ),
-      ),
-      ...List.generate(_productController.productsList.length, (index) {
-        return ProductCard(product: _productController.productsList[index]);
-      }),
-      SizedBox(
-        height: 30,
-      ),
+        Padding(
+          padding: const EdgeInsets.only(top: 10.0),
+          child: Text(
+            'ALL MACHINES',
+            style: TextStyle(
+                fontFamily: 'SF Pro Display',
+                fontSize: 32.0,
+                color: AppTheme.darkColor,
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+        ...List.generate(_productController.productsList.length, (index) {
+          return ProductCard(product: _productController.productsList[index]);
+        }),
+        SizedBox(
+          height: 30,
+        ),
 
-      // ListView.separated(
-      //     separatorBuilder: (BuildContext context, int index) =>
-      //         const Divider(color: Colors.white),
-      //     scrollDirection: Axis.vertical,
-      //     itemCount: _productController.productsList.length,
-      //     itemBuilder: (BuildContext context, int index) {
-      //       print(_productController.productsList[index]);
-      //       return ProductCard(product: _productController.productsList[index]);
-      //     })
-    ]));
+        // ListView.separated(
+        //     separatorBuilder: (BuildContext context, int index) =>
+        //         const Divider(color: Colors.white),
+        //     scrollDirection: Axis.vertical,
+        //     itemCount: _productController.productsList.length,
+        //     itemBuilder: (BuildContext context, int index) {
+        //       print(_productController.productsList[index]);
+        //       return ProductCard(product: _productController.productsList[index]);
+        //     })
+      ]),
+    ));
   }
 }
 

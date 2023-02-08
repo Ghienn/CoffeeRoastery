@@ -24,7 +24,7 @@ class OtherCoffeeCard extends StatelessWidget {
       child: Padding(
           padding: EdgeInsets.only(right: 15.0),
           child: Container(
-              height: 200.0,
+              height: 150.0,
               width: 150.0,
               child: Column(
                 children: <Widget>[
@@ -33,7 +33,7 @@ class OtherCoffeeCard extends StatelessWidget {
                     Positioned(
                         top: 0.0,
                         child: Container(
-                            height: 200.0,
+                            height: 150.0,
                             width: 150.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25.0),

@@ -47,23 +47,23 @@ class ApiRequest {
     };
   }
 
-  static Future<List<CoffeeProductList>> findCoffeeProduct(
-      @required String code) async {
-    List<CoffeeProductList> coffeeProducts1 = <CoffeeProductList>[];
-    String findURL = "${ApiHandler.baseURL}/V1/FindCoffeeProduct";
+  // static Future<List<CoffeeProductList>> findCoffeeProduct(
+  //     @required String code) async {
+  //   List<CoffeeProductList> coffeeProducts1 = <CoffeeProductList>[];
+  //   String findURL = "${ApiHandler.baseURL}/V1/FindCoffeeProduct";
 
-    var findRespond = await ApiHandler.handler
-        .get(findURL, queryParameters: {"SerialNumber": code});
+  //   var findRespond = await ApiHandler.handler
+  //       .get(findURL, queryParameters: {"SerialNumber": code});
 
-    if (findRespond.statusCode == 200) {
-      var findData = findRespond.data;
-      print(findData);
-      //Set Find Coffee List
-      var findCoffeeProductList = findData;
-      for (var findCoffeeProductData in findCoffeeProductList) {
-        coffeeProducts1.add(CoffeeProductList.fromJson(findCoffeeProductData));
-      }
-    }
-    return coffeeProducts1;
-  }
+  //   if (findRespond.statusCode == 200) {
+  //     var findData = findRespond.data;
+  //     print(findData);
+  //     //Set Find Coffee List
+  //     var findCoffeeProductList = findData;
+  //     for (var findCoffeeProductData in findCoffeeProductList) {
+  //       coffeeProducts1.add(CoffeeProductList.fromJson(findCoffeeProductData));
+  //     }
+  //   }
+  //   return coffeeProducts1;
+  // }
 }
