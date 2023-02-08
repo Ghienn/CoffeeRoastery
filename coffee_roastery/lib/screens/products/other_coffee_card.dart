@@ -24,11 +24,31 @@ class OtherCoffeeCard extends StatelessWidget {
       child: Padding(
           padding: EdgeInsets.only(right: 15.0),
           child: Container(
-              height: 150.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color(0xFFB68E72),
+              ),
+              height: 100.0,
               width: 150.0,
               child: Column(
                 children: <Widget>[
                   Stack(children: [
+                    Positioned(
+                      top: 160,
+                      child: Container(
+                        padding: EdgeInsets.only(left: 20, right: 20),
+                        height: 70,
+                        child: Text(
+                          coffeeProductList.description!,
+                          // ignore: prefer_const_constructors
+                          style: TextStyle(
+                              fontFamily: 'SF Pro Display',
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
                     Container(height: 200.0),
                     Positioned(
                         top: 0.0,

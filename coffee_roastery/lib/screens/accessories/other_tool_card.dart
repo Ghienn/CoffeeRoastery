@@ -34,7 +34,7 @@ class OtherToolCard extends StatelessWidget {
                     Positioned(
                         top: 0.0,
                         child: Container(
-                            height: 150.0,
+                            height: 180.0,
                             width: 150.0,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25.0),
