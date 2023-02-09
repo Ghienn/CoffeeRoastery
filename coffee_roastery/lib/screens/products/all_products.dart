@@ -8,6 +8,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../components/machine_card.dart';
 import '../../components/products_card.dart';
 import '../../controller/coffee_product_controller.dart';
+import '../../custom_search.dart';
 import '../../home_page.dart';
 import '../../models/coffee_product.dart';
 import '../../service/api_handler.dart';
@@ -52,7 +53,10 @@ class _AllProductsPageState extends State<AllProductsPage> {
                 padding: EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
                   onTap: () {
-                    // showSearch(context: context, delegate: CustomSearch());
+                    onTap:
+                    () {
+                      showSearch(context: context, delegate: SearchPage());
+                    };
                   },
                   child: Container(
                     height: 30.0,

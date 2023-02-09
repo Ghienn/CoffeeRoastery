@@ -33,20 +33,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
-      print(value);
-      List<CoffeeProductList> coffeeProductList =
-          value['coffeeProducts'] ?? <CoffeeProductList>[];
-      List<ProductList> productList = value['products'] ?? <ProductList>[];
-      List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
-      _coffeeProductController.coffeeProductsList.clear();
-      _productController.productsList.clear();
-      _coffeeToolController.coffeeToolList.clear();
-      _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
-      _productController.productsList.addAll(productList);
-      _coffeeToolController.coffeeToolList.addAll(toolList);
-    });
-
     return Scaffold(
         body: SafeArea(
       child: ListView(

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:coffee_roastery/controller/coffee_product_controller.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import '../../models/note_list.dart';
 import '../../theme.dart';

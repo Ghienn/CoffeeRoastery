@@ -1,7 +1,7 @@
 import 'package:coffee_roastery/models/product.dart';
 import 'package:coffee_roastery/screens/machines/other_product_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:get/get.dart';
 import '../../controller/machine_controller.dart';
 import '../../theme.dart';

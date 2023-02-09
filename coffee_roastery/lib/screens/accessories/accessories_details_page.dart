@@ -3,7 +3,6 @@ import 'package:coffee_roastery/models/coffee_tool.dart';
 import 'package:coffee_roastery/screens/accessories/other_tool_card.dart';
 import 'package:coffee_roastery/screens/products/other_coffee_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import '../../theme.dart';
 
