@@ -20,80 +20,106 @@ class AllProductsPage extends StatefulWidget {
 
 class _AllProductsPageState extends State<AllProductsPage> {
   final _coffeeProductController = Get.put(CoffeeProductController());
+  final GlobalKey<_AllProductsPageState> _refreshIndicatorKey =
+      GlobalKey<_AllProductsPageState>();
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    CoffeeListRefresh();
+  }
+
+  Future<void> CoffeeListRefresh() async {
+    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
+      List<CoffeeProductList> coffeeProductList =
+          value['coffeeProducts'] ?? <CoffeeProductList>[];
+
+      _coffeeProductController.coffeeProductsList.clear();
+      _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
+      print("Update pet list");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // ApiRequest.findCoffeeProduct("000000002").then((value) {
-    //   print(value);
-    //   List<CoffeeProductList> coffeeProductList1 =
-    //       value['coffeeProducts'] ?? <CoffeeProductList>[];
-    //   _coffeeProductController.coffeeProductsList.clear();
-    //   _coffeeProductController.coffeeProductsList.addAll(coffeeProductList1);
-    // });
     return Scaffold(
         body: SafeArea(
-      child: ListView(padding: EdgeInsets.only(left: 20.0), children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 20.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.only(left: 0.0),
-                  child: Container(
-                    height: 30.0,
-                    width: 30.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                          image: AssetImage('assets/menu.png'),
-                          fit: BoxFit.cover),
-                    ),
-                  )),
-              Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  onTap: () {
-                    onTap:
-                    () {
-                      showSearch(context: context, delegate: SearchPage());
-                    };
-                  },
-                  child: Container(
-                    height: 30.0,
-                    width: 30.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      image: DecorationImage(
-                          image: AssetImage('assets/search.png'),
-                          fit: BoxFit.cover),
+      child: RefreshIndicator(
+        color: AppTheme.darkColor,
+        key: _refreshIndicatorKey,
+        onRefresh: () async {
+          CoffeeListRefresh();
+        },
+        child:
+            ListView(padding: EdgeInsets.only(left: 20.0), children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Padding(
+                    padding: EdgeInsets.only(left: 0.0),
+                    child: Container(
+                      height: 30.0,
+                      width: 30.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                            image: AssetImage('assets/menu.png'),
+                            fit: BoxFit.cover),
+                      ),
+                    )),
+                Padding(
+                  padding: EdgeInsets.only(right: 20.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      onTap:
+                      () {
+                        showSearch(context: context, delegate: SearchPage());
+                      };
+                    },
+                    child: Container(
+                      height: 30.0,
+                      width: 30.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        image: DecorationImage(
+                            image: AssetImage('assets/search.png'),
+                            fit: BoxFit.cover),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 10.0),
-          child: Text(
-            'ALL PRODUCTS',
-            style: TextStyle(
-                fontFamily: 'SF Pro Display',
-                fontSize: 32.0,
-                color: AppTheme.darkColor,
-                fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Text(
+              'ALL PRODUCTS',
+              style: TextStyle(
+                  fontFamily: 'SF Pro Display',
+                  fontSize: 32.0,
+                  color: AppTheme.darkColor,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        ...List.generate(_coffeeProductController.coffeeProductsList.length,
-            (index) {
-          return ProductsCard(
-              coffeeProduct:
-                  _coffeeProductController.coffeeProductsList[index]);
-        }),
-        SizedBox(
-          height: 30,
-        )
-      ]),
+          ...List.generate(_coffeeProductController.coffeeProductsList.length,
+              (index) {
+            return ProductsCard(
+                coffeeProduct:
+                    _coffeeProductController.coffeeProductsList[index]);
+          }),
+          SizedBox(
+            height: 30,
+          )
+        ]),
+      ),
     ));
   }
 }
