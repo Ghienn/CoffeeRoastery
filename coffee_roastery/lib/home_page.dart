@@ -178,8 +178,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     itemBuilder: (BuildContext context, int index) {
                       print(_coffeeProductController.coffeeProductsList[index]);
                       return CoffeeProductCard(
-                          coffeeProduct: _coffeeProductController
-                              .coffeeProductsList[index]);
+                        coffeeProduct:
+                            _coffeeProductController.coffeeProductsList[index],
+                        isFavorite: false,
+                      );
                     })),
             SizedBox(height: 10.0),
             Row(

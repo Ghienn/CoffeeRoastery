@@ -1,3 +1,4 @@
+import 'package:coffee_roastery/home_page.dart';
 import 'package:coffee_roastery/screens/splash_screen.dart';
 import 'package:coffee_roastery/service/api_handler.dart';
 import 'package:coffee_roastery/service/networking.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
       _coffeeToolController.coffeeToolList.addAll(toolList);
     });
     return GetMaterialApp(
-      home: SplashScreen(),
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -8,8 +8,10 @@ import '../service/networking.dart';
 
 class CoffeeProductCard extends StatelessWidget {
   final CoffeeProductList coffeeProduct;
+  final bool isFavorite;
 
-  const CoffeeProductCard({required this.coffeeProduct});
+  const CoffeeProductCard(
+      {required this.coffeeProduct, required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -73,19 +75,19 @@ class CoffeeProductCard extends StatelessWidget {
                                                 color: Colors.white),
                                           ),
                                         ),
-                                        // Container(
-                                        //     height: 20.0,
-                                        //     width: 20.0,
-                                        //     decoration: BoxDecoration(
-                                        //         borderRadius:
-                                        //             BorderRadius.circular(20.0),
-                                        //         color: Colors.white),
-                                        //     child: Center(
-                                        //         child: Icon(Icons.favorite,
-                                        //             color: isFavorite
-                                        //                 ? Colors.red
-                                        //                 : Colors.grey,
-                                        //             size: 12.0)))
+                                        Container(
+                                            height: 20.0,
+                                            width: 20.0,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                                color: Colors.white),
+                                            child: Center(
+                                                child: Icon(Icons.favorite,
+                                                    color: isFavorite
+                                                        ? Colors.red
+                                                        : Colors.grey,
+                                                    size: 12.0)))
                                       ],
                                     )
                                   ]))),
