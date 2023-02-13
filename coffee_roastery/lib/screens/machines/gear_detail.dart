@@ -106,9 +106,9 @@ class GearDetailsPage extends StatelessWidget {
                                   fontSize: 25)),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20, top: 20),
+                          padding: const EdgeInsets.only(left: 20, top: 10),
                           child: Container(
-                            height: 225.0,
+                            height: 250.0,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: _productController.productsList.length,

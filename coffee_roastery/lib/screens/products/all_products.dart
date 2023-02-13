@@ -1,15 +1,12 @@
-import 'package:coffee_roastery/components/accessories_card.dart';
-import 'package:coffee_roastery/screens/products/coffee_details_page.dart';
 import 'package:coffee_roastery/theme.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import '../../components/machine_card.dart';
+
 import '../../components/products_card.dart';
 import '../../controller/coffee_product_controller.dart';
-import '../../custom_search.dart';
-import '../../home_page.dart';
+import 'package:coffee_roastery/custom_search.dart';
+
 import '../../models/coffee_product.dart';
 import '../../service/api_handler.dart';
 
@@ -23,6 +20,18 @@ class _AllProductsPageState extends State<AllProductsPage> {
   final GlobalKey<_AllProductsPageState> _refreshIndicatorKey =
       GlobalKey<_AllProductsPageState>();
 
+  Future<void> CoffeeListRefresh() async {
+    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
+      List<CoffeeProductList> coffeeProductList =
+          value['coffeeProducts'] ?? <CoffeeProductList>[];
+
+      _coffeeProductController.coffeeProductsList.clear();
+      _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
+      print("Update product list");
+    });
+    setState(() {});
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -34,17 +43,6 @@ class _AllProductsPageState extends State<AllProductsPage> {
     CoffeeListRefresh();
   }
 
-  Future<void> CoffeeListRefresh() async {
-    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
-      List<CoffeeProductList> coffeeProductList =
-          value['coffeeProducts'] ?? <CoffeeProductList>[];
-
-      _coffeeProductController.coffeeProductsList.clear();
-      _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
-      print("Update pet list");
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +51,7 @@ class _AllProductsPageState extends State<AllProductsPage> {
         color: AppTheme.darkColor,
         key: _refreshIndicatorKey,
         onRefresh: () async {
-          CoffeeListRefresh();
+          await CoffeeListRefresh();
         },
         child:
             ListView(padding: EdgeInsets.only(left: 20.0), children: <Widget>[
@@ -78,10 +76,7 @@ class _AllProductsPageState extends State<AllProductsPage> {
                   padding: EdgeInsets.only(right: 20.0),
                   child: GestureDetector(
                     onTap: () {
-                      onTap:
-                      () {
-                        showSearch(context: context, delegate: SearchPage());
-                      };
+                      showSearch(context: context, delegate: SearchPage());
                     },
                     child: Container(
                       height: 30.0,

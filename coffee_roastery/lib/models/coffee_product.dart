@@ -13,6 +13,7 @@ class CoffeeProductList {
   String? varietal;
   int? altitudeFrom;
   int? altitudeTo;
+  String? process;
   List<NoteList>? noteList;
 
   CoffeeProductList(
@@ -28,6 +29,7 @@ class CoffeeProductList {
       this.varietal,
       this.altitudeFrom,
       this.altitudeTo,
+      this.process,
       this.noteList});
 
   CoffeeProductList.fromJson(Map<String, dynamic> json) {
@@ -43,6 +45,7 @@ class CoffeeProductList {
     varietal = json['Varietal'];
     altitudeFrom = json['AltitudeFrom'];
     altitudeTo = json['AltitudeTo'];
+    process = json['Process'];
     if (json['NoteList'] != null) {
       noteList = <NoteList>[];
       json['NoteList'].forEach((v) {
@@ -65,6 +68,7 @@ class CoffeeProductList {
     data['Varietal'] = this.varietal;
     data['AltitudeFrom'] = this.altitudeFrom;
     data['AltitudeTo'] = this.altitudeTo;
+    data['Process'] = this.process;
     if (this.noteList != null) {
       data['NoteList'] = this.noteList!.map((v) => v.toJson()).toList();
     }

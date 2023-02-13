@@ -41,20 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<_MyHomePageState> _refreshIndicatorKey =
       GlobalKey<_MyHomePageState>();
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    ProductsListRefresh();
-  }
-
   Future<void> ProductsListRefresh() async {
-    ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
-      print(value);
+    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
+      // print(value);
       List<CoffeeProductList> coffeeProductList =
           value['coffeeProducts'] ?? <CoffeeProductList>[];
       List<ProductList> productList = value['products'] ?? <ProductList>[];
@@ -66,6 +55,18 @@ class _MyHomePageState extends State<MyHomePage> {
       _productController.productsList.addAll(productList);
       _coffeeToolController.coffeeToolList.addAll(toolList);
     });
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ProductsListRefresh();
   }
 
   @override
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
       color: AppTheme.darkColor,
       key: _refreshIndicatorKey,
       onRefresh: () async {
-        ProductsListRefresh();
+        await ProductsListRefresh();
       },
       child: SafeArea(
         child: ListView(
@@ -128,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 32.0,
                         fontWeight: FontWeight.bold,
                         color: AppTheme.darkColor)),
-                Text('Begins with Energy',
+                Text('Begins with Energy.',
                     style: TextStyle(
                         fontFamily: 'SF Pro Display',
                         fontSize: 32.0,

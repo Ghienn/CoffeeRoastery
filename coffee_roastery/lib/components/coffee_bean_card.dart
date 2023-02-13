@@ -53,42 +53,36 @@ class CoffeeProductCard extends StatelessWidget {
                                       // ignore: prefer_const_constructors
                                       style: TextStyle(
                                           fontFamily: 'SF Pro Display',
-                                          fontSize: 22.0,
+                                          fontSize: 24.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white),
                                     ),
                                     SizedBox(height: 10.0),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Container(
-                                          height: 50.0,
-                                          width: 150.0,
-                                          child: Text(
-                                            'Our dark, rich espresso balanced with steamed milk and a light layer of foam',
-                                            maxLines: 4,
-                                            style: const TextStyle(
-                                                fontFamily: 'SF Pro Display',
-                                                fontSize: 12.0,
-                                                // fontWeight: FontWeight.w300,
-                                                color: Colors.white),
-                                          ),
-                                        ),
-                                        Container(
-                                            height: 20.0,
-                                            width: 20.0,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(20.0),
-                                                color: Colors.white),
-                                            child: Center(
-                                                child: Icon(Icons.favorite,
-                                                    color: isFavorite
-                                                        ? Colors.red
-                                                        : Colors.grey,
-                                                    size: 12.0)))
-                                      ],
+                                    Container(
+                                      height: 20.0,
+                                      width: 200.0,
+                                      child: Text(
+                                        'Farm: ${coffeeProduct.farm}',
+                                        maxLines: 2,
+                                        style: const TextStyle(
+                                            fontFamily: 'SF Pro Display',
+                                            fontSize: 18.0,
+                                            // fontWeight: FontWeight.w300,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
+                                      height: 20.0,
+                                      width: 200.0,
+                                      child: Text(
+                                        'Bean: ${coffeeProduct.bean}',
+                                        maxLines: 2,
+                                        style: const TextStyle(
+                                            fontFamily: 'SF Pro Display',
+                                            fontSize: 18.0,
+                                            // fontWeight: FontWeight.w300,
+                                            color: Colors.white),
+                                      ),
                                     )
                                   ]))),
                       Positioned(

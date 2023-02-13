@@ -90,14 +90,15 @@ class CoffeeDetailsPage extends StatelessWidget {
                                   title: 'Varietal',
                                   value: coffeeProduct.varietal!)
                             ],
-                            initiallyExpanded: false,
+                            initiallyExpanded: true,
                           ),
                         ),
                         CustomDropdownRow(
                           title: 'Processing Method',
                           componentsList: [
                             CustomRowComponent(
-                                title: 'Process', value: 'Honey'),
+                                title: 'Process',
+                                value: coffeeProduct.process!),
                             CustomRowComponent(
                                 title: 'Grade', value: coffeeProduct.grade!),
                           ],

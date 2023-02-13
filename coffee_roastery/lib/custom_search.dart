@@ -1,6 +1,5 @@
-import 'package:coffee_roastery/components/coffee_bean_card.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
-import 'package:coffee_roastery/screens/products/coffee_details_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

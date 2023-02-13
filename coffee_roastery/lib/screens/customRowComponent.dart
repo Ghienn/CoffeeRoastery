@@ -33,10 +33,10 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
         padding: EdgeInsets.only(left: maxWidth * 0.048),
         child: const Divider(
           height: 1,
-          thickness: 2,
+          thickness: 1,
           indent: 0,
           endIndent: 20,
-          color: Color.fromARGB(255, 244, 242, 239),
+          color: AppTheme.dividerColor,
         ),
       ),
       Container(
