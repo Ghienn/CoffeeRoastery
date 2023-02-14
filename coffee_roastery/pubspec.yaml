@@ -41,6 +41,7 @@ dependencies:
   dio: ^4.0.6
   get: ^4.6.5
   easy_search_bar: ^2.4.2
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -111,11 +112,11 @@ flutter:
     #     - asset: assets/Nunito-Regular.ttf
     #     - asset: assets/Nunito-Light.ttf
     #       weight: 300
-    - family: opensans
-      fonts:
-        - asset: assets/OpenSans-Bold.ttf
-        - asset: assets/OpenSans-SemiBold.ttf
-        - asset: assets/OpenSans-Regular.ttf
+    # - family: opensans
+    #   fonts:
+    #     - asset: assets/OpenSans-Bold.ttf
+    #     - asset: assets/OpenSans-SemiBold.ttf
+    #     - asset: assets/OpenSans-Regular.ttf
 
     - family: SF Pro Display
       fonts:

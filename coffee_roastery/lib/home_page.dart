@@ -219,7 +219,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return ProductCard(
                   product: _productController.productsList[index]);
             }),
-            SizedBox(height: 15.0),
+            SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               // ignore: prefer_const_literals_to_create_immutables

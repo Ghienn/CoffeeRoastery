@@ -42,29 +42,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
-
-  // Future<void> loadData() async {
-  //   await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
-  //     List<CoffeeProductList> coffeeProductList =
-  //         value['coffeeProducts'] ?? <CoffeeProductList>[];
-  //     List<ProductList> productList = value['products'] ?? <ProductList>[];
-  //     List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
-  //     _coffeeProductController.coffeeProductsList.clear();
-  //     _productController.productsList.clear();
-  //     _coffeeToolController.coffeeToolList.clear();
-  //     _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
-  //     _productController.productsList.addAll(productList);
-  //     _coffeeToolController.coffeeToolList.addAll(toolList);
-  //   });
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   loadData();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

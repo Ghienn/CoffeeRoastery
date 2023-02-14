@@ -50,6 +50,7 @@ class CoffeeProductCard extends StatelessWidget {
                                     ),
                                     Text(
                                       coffeeProduct.description!,
+                                      maxLines: 1,
                                       // ignore: prefer_const_constructors
                                       style: TextStyle(
                                           fontFamily: 'SF Pro Display',
@@ -59,10 +60,10 @@ class CoffeeProductCard extends StatelessWidget {
                                     ),
                                     SizedBox(height: 10.0),
                                     Container(
-                                      height: 20.0,
+                                      height: 25.0,
                                       width: 200.0,
                                       child: Text(
-                                        'Farm: ${coffeeProduct.farm}',
+                                        'Bean: ${coffeeProduct.bean}',
                                         maxLines: 2,
                                         style: const TextStyle(
                                             fontFamily: 'SF Pro Display',
@@ -72,10 +73,10 @@ class CoffeeProductCard extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      height: 20.0,
+                                      height: 25.0,
                                       width: 200.0,
                                       child: Text(
-                                        'Bean: ${coffeeProduct.bean}',
+                                        'Origin: ${coffeeProduct.origin}',
                                         maxLines: 2,
                                         style: const TextStyle(
                                             fontFamily: 'SF Pro Display',

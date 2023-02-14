@@ -37,15 +37,38 @@ class OtherCoffeeCard extends StatelessWidget {
                       top: 160,
                       child: Container(
                         padding: EdgeInsets.only(left: 20, right: 20),
-                        height: 70,
-                        child: Text(
-                          coffeeProductList.description!,
-                          // ignore: prefer_const_constructors
-                          style: TextStyle(
-                              fontFamily: 'SF Pro Display',
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+                        height: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              coffeeProductList.description!,
+                              // ignore: prefer_const_constructors
+                              style: TextStyle(
+                                  fontFamily: 'SF Pro Display',
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                            Text(
+                              "Bean: ${coffeeProductList.bean!}",
+                              // ignore: prefer_const_constructors
+                              style: TextStyle(
+                                  fontFamily: 'SF Pro Display',
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
+                            ),
+                            // Text(
+                            //   "Origin: ${coffeeProductList.origin!}",
+                            //   // ignore: prefer_const_constructors
+                            //   style: TextStyle(
+                            //       fontFamily: 'SF Pro Display',
+                            //       fontSize: 12.0,
+                            //       fontWeight: FontWeight.w500,
+                            //       color: Colors.white),
+                            // ),
+                          ],
                         ),
                       ),
                     ),
