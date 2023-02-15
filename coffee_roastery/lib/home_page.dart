@@ -138,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               fontSize: 32.0,
                               fontWeight: FontWeight.bold,
                               color: AppTheme.darkColor)),
-                      Text('Begins with Energy.',
+                      Text('Begins with Energy',
                           style: TextStyle(
                               fontFamily: 'SF Pro Display',
                               fontSize: 32.0,

@@ -7,6 +7,7 @@ import 'controller/coffee_product_controller.dart';
 
 class SearchPage extends SearchDelegate<CoffeeProductList> {
   final _searchController = Get.put(CoffeeProductController());
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -14,7 +15,10 @@ class SearchPage extends SearchDelegate<CoffeeProductList> {
           onPressed: () {
             query = '';
           },
-          icon: Icon(Icons.clear))
+          icon: Icon(
+            Icons.clear,
+            size: 30,
+          ))
     ];
   }
 
@@ -34,7 +38,8 @@ class SearchPage extends SearchDelegate<CoffeeProductList> {
     List<String> matchQuery = [];
     List<String> products = <String>[];
     for (var itemCoffee in _coffeeProductList.coffeeProductsList) {
-      products.add(itemCoffee.description!);
+      products.clear;
+      // products.add(itemCoffee.description!);
       products.add(itemCoffee.code!);
     }
 
