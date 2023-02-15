@@ -122,5 +122,5 @@ flutter:
       fonts:
         - asset: assets/SFPRODISPLAYBOLD.otf
         - asset: assets/SFPRODISPLAYMEDIUM.otf
-        - asset: assets/SFPRODISPLAYMEDIUM.otf
+        - asset: assets/SFPRODISPLAYREGULAR.otf
 

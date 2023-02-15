@@ -33,13 +33,14 @@ class SearchPage extends SearchDelegate<CoffeeProductList> {
 
     List<String> matchQuery = [];
     List<String> products = <String>[];
-    for (var item in _coffeeProductList.coffeeProductsList) {
-      products.add(item.description!);
+    for (var itemCoffee in _coffeeProductList.coffeeProductsList) {
+      products.add(itemCoffee.description!);
+      products.add(itemCoffee.code!);
     }
 
-    for (var item in products) {
-      if (item.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(item);
+    for (var itemSearch in products) {
+      if (itemSearch.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(itemSearch);
       }
     }
 
@@ -55,14 +56,6 @@ class SearchPage extends SearchDelegate<CoffeeProductList> {
           final suggestion = suggestions[index];
           return _coffeeProductList.itemProduct(
               suggestion: suggestion, query: query);
-          // var result = matchQuery[index];
-          // // return ListTile(
-          // //   onTap: () {
-          // //     // query = result;
-          // //     // int index =
-          // //   },
-          // //   title: Text(result),
-          // // );
         }));
   }
 

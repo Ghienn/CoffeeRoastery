@@ -9,6 +9,7 @@ import 'package:coffee_roastery/screens/accessories/all_accessories.dart';
 import 'package:coffee_roastery/screens/customDropdownRow.dart';
 import 'package:coffee_roastery/screens/customRowComponent.dart';
 import 'package:coffee_roastery/screens/machines/all_machines.dart';
+import 'package:coffee_roastery/screens/navigation_drawer.dart';
 import 'package:coffee_roastery/screens/products/all_products.dart';
 import 'package:coffee_roastery/screens/products/other_coffee_card.dart';
 import 'package:coffee_roastery/service/api_handler.dart';
@@ -72,192 +73,203 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: SafeArea(child: NavigationDrawerWidget()),
         body: RefreshIndicator(
-      color: AppTheme.darkColor,
-      key: _refreshIndicatorKey,
-      onRefresh: () async {
-        await ProductsListRefresh();
-      },
-      child: SafeArea(
-        child: ListView(
-          padding: EdgeInsets.only(left: 20.0),
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          color: AppTheme.darkColor,
+          key: _refreshIndicatorKey,
+          onRefresh: () async {
+            await ProductsListRefresh();
+          },
+          child: Builder(builder: (context) {
+            return SafeArea(
+              child: ListView(
+                padding: EdgeInsets.only(left: 20.0),
                 children: <Widget>[
                   Padding(
-                      padding: EdgeInsets.only(left: 0.0),
-                      child: Container(
-                        height: 30.0,
-                        width: 30.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage('assets/menu.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      )),
-                  Padding(
-                      padding: EdgeInsets.only(right: 20.0),
-                      child: GestureDetector(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Padding(
+                            padding: EdgeInsets.only(left: 0.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Scaffold.of(context).openDrawer();
+                              },
+                              child: Container(
+                                height: 30.0,
+                                width: 30.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  image: DecorationImage(
+                                      image: AssetImage('assets/menu.png'),
+                                      fit: BoxFit.cover),
+                                ),
+                              ),
+                            )),
+                        Padding(
+                            padding: EdgeInsets.only(right: 20.0),
+                            child: GestureDetector(
+                              onTap: () {
+                                showSearch(
+                                    context: context, delegate: SearchPage());
+                              },
+                              child: Container(
+                                height: 30.0,
+                                width: 30.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  image: DecorationImage(
+                                      image: AssetImage('assets/search.png'),
+                                      fit: BoxFit.cover),
+                                ),
+                              ),
+                            ))
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 15.0),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Morning,',
+                          style: TextStyle(
+                              fontFamily: 'SF Pro Display',
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.darkColor)),
+                      Text('Begins with Energy.',
+                          style: TextStyle(
+                              fontFamily: 'SF Pro Display',
+                              fontSize: 32.0,
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.darkColor)),
+                    ],
+                  ),
+                  SizedBox(height: 25.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      // ignore: prefer_const_constructors
+                      Text(
+                        'COFFEE PRODUCTS',
+                        style: TextStyle(
+                            fontFamily: 'SF Pro Display',
+                            fontSize: 20.0,
+                            color: AppTheme.darkColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
                         onTap: () {
-                          showSearch(context: context, delegate: SearchPage());
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AllProductsPage()));
                         },
-                        child: Container(
-                          height: 30.0,
-                          width: 30.0,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            image: DecorationImage(
-                                image: AssetImage('assets/search.png'),
-                                fit: BoxFit.cover),
+                        child: const Padding(
+                          padding: EdgeInsets.only(right: 20.0),
+                          child: Text(
+                            'See all',
+                            style: TextStyle(
+                                fontFamily: 'SF Pro Display',
+                                fontSize: 18.0,
+                                color: Color.fromARGB(255, 153, 137, 130)),
                           ),
                         ),
-                      ))
+                      ),
+                    ],
+                  ),
+                  // SizedBox(height: 15.0),
+                  SizedBox(
+                      height: 350.0,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _coffeeProductController
+                              .coffeeProductsList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            print(_coffeeProductController
+                                .coffeeProductsList[index]);
+                            return CoffeeProductCard(
+                              coffeeProduct: _coffeeProductController
+                                  .coffeeProductsList[index],
+                              isFavorite: false,
+                            );
+                          })),
+                  SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      const Text(
+                        'MACHINE GEAR',
+                        style: TextStyle(
+                            fontFamily: 'SF Pro Display',
+                            fontSize: 20.0,
+                            color: AppTheme.darkColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AllProductPage()));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.only(right: 20.0),
+                          child: Text(
+                            'See all',
+                            style: TextStyle(
+                                fontFamily: 'SF Pro Display',
+                                fontSize: 18.0,
+                                color: Color.fromARGB(255, 153, 137, 130)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  ...List.generate(3, (index) {
+                    return ProductCard(
+                        product: _productController.productsList[index]);
+                  }),
+                  SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      const Text(
+                        'ACCESSORIES',
+                        style: TextStyle(
+                            fontFamily: 'SF Pro Display',
+                            fontSize: 20.0,
+                            color: AppTheme.darkColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AllAccessoriesPage()));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.only(right: 20.0),
+                          child: Text(
+                            'See all',
+                            style: TextStyle(
+                                fontFamily: 'SF Pro Display',
+                                fontSize: 18.0,
+                                color: Color.fromARGB(255, 153, 137, 130)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  ...List.generate(3, (index) {
+                    return CoffeeToolCard(
+                        coffeeTool:
+                            _coffeeToolController.coffeeToolList[index]);
+                  }),
+                  SizedBox(height: 30)
                 ],
               ),
-            ),
-            SizedBox(height: 15.0),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Morning,',
-                    style: TextStyle(
-                        fontFamily: 'SF Pro Display',
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.darkColor)),
-                Text('Begins with Energy.',
-                    style: TextStyle(
-                        fontFamily: 'SF Pro Display',
-                        fontSize: 32.0,
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.darkColor)),
-              ],
-            ),
-            SizedBox(height: 25.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: <Widget>[
-                // ignore: prefer_const_constructors
-                Text(
-                  'COFFEE PRODUCTS',
-                  style: TextStyle(
-                      fontFamily: 'SF Pro Display',
-                      fontSize: 20.0,
-                      color: AppTheme.darkColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AllProductsPage()));
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 20.0),
-                    child: Text(
-                      'See all',
-                      style: TextStyle(
-                          fontFamily: 'SF Pro Display',
-                          fontSize: 18.0,
-                          color: Color.fromARGB(255, 153, 137, 130)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            // SizedBox(height: 15.0),
-            SizedBox(
-                height: 350.0,
-                child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount:
-                        _coffeeProductController.coffeeProductsList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      print(_coffeeProductController.coffeeProductsList[index]);
-                      return CoffeeProductCard(
-                        coffeeProduct:
-                            _coffeeProductController.coffeeProductsList[index],
-                        isFavorite: false,
-                      );
-                    })),
-            SizedBox(height: 10.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: <Widget>[
-                const Text(
-                  'MACHINE GEAR',
-                  style: TextStyle(
-                      fontFamily: 'SF Pro Display',
-                      fontSize: 20.0,
-                      color: AppTheme.darkColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AllProductPage()));
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 20.0),
-                    child: Text(
-                      'See all',
-                      style: TextStyle(
-                          fontFamily: 'SF Pro Display',
-                          fontSize: 18.0,
-                          color: Color.fromARGB(255, 153, 137, 130)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            ...List.generate(3, (index) {
-              return ProductCard(
-                  product: _productController.productsList[index]);
-            }),
-            SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // ignore: prefer_const_literals_to_create_immutables
-              children: <Widget>[
-                const Text(
-                  'ACCESSORIES',
-                  style: TextStyle(
-                      fontFamily: 'SF Pro Display',
-                      fontSize: 20.0,
-                      color: AppTheme.darkColor,
-                      fontWeight: FontWeight.bold),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AllAccessoriesPage()));
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.only(right: 20.0),
-                    child: Text(
-                      'See all',
-                      style: TextStyle(
-                          fontFamily: 'SF Pro Display',
-                          fontSize: 18.0,
-                          color: Color.fromARGB(255, 153, 137, 130)),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            ...List.generate(3, (index) {
-              return CoffeeToolCard(
-                  coffeeTool: _coffeeToolController.coffeeToolList[index]);
-            }),
-            SizedBox(height: 30)
-          ],
-        ),
-      ),
-    ));
+            );
+          }),
+        ));
   }
 }

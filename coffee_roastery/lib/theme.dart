@@ -7,4 +7,5 @@ class AppTheme {
   static const darkColor = Color(0xFF382E1E);
   static const textColor = Color(0xFF473D3A);
   static const dividerColor = Color.fromARGB(106, 56, 46, 30);
+  static const coffeeBoxColor = Color(0xFFB68E72);
 }
