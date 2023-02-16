@@ -20,8 +20,8 @@ class ApiHandler {
     return respond;
   }
 
-  static Future<Response> getfindJson(String url) async {
-    var respond = await _handler.get(url);
-    return respond;
-  }
+  // static Future<Response> getfindJson(String url) async {
+  //   var respond = await _handler.get(url);
+  //   return respond;
+  // }
 }

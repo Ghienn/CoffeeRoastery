@@ -21,6 +21,7 @@ class ApiRequest {
     if (respond.statusCode == 200) {
       var data = respond.data["Metadata"][0];
       print(data);
+      print('success');
 
       //set Coffee List
       var coffeeProductList = data['CoffeeProductList'];
@@ -29,11 +30,13 @@ class ApiRequest {
             CoffeeProductList.fromJson(coffeeProductData);
         coffeeProducts.add(coffeeProduct);
       }
+
       //set Machines List
       var productList = data['ProductList'];
       for (var productData in productList) {
         products.add(ProductList.fromJson(productData));
       }
+
       //set CoffeeTool List
       var coffeeToolsList = data['CoffeeToolList'];
       for (var toolData in coffeeToolsList) {
