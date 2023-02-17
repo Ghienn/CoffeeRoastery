@@ -36,8 +36,8 @@ class OtherCoffeeCard extends StatelessWidget {
                     Positioned(
                       top: 160,
                       child: Container(
-                        padding: EdgeInsets.only(left: 20, right: 20),
                         height: 100,
+                        width: 150,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [

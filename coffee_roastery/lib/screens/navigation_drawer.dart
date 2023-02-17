@@ -1,5 +1,6 @@
 import 'package:coffee_roastery/screens/about_us.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../theme.dart';
 
@@ -7,10 +8,10 @@ class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
   @override
   Widget build(BuildContext context) {
-    final name = 'Sarah Abs';
-    final email = 'sarah@abs.com';
-    final urlImage =
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
+    // final name = 'Sarah Abs';
+    // final email = 'sarah@abs.com';
+    // final urlImage =
+    //     'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
 
     return Drawer(
       child: Material(
@@ -156,7 +157,9 @@ class NavigationDrawerWidget extends StatelessWidget {
 
     return ListTile(
       leading: Icon(icon, color: color),
-      title: Text(text, style: TextStyle(color: color)),
+      title: Text(text,
+          style: TextStyle(
+              color: color, fontFamily: 'SF Pro Display', fontSize: 20)),
       hoverColor: hoverColor,
       onTap: onClicked,
     );
@@ -167,9 +170,7 @@ class NavigationDrawerWidget extends StatelessWidget {
 
     switch (index) {
       case 0:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => AboutUsPage(),
-        ));
+        Get.to(AboutUsPage());
         break;
       case 1:
         // Navigator.of(context).push(MaterialPageRoute(

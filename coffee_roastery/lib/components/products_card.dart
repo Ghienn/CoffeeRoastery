@@ -60,7 +60,7 @@ class ProductsCard extends StatelessWidget {
                           EdgeInsets.only(top: 25.0, left: 10.0, right: 10),
                       child: Text(
                         coffeeProduct.description!,
-                        maxLines: 3,
+                        maxLines: 1,
                         style: TextStyle(
                             color: AppTheme.textColor,
                             fontSize: 25,
