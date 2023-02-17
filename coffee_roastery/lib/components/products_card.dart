@@ -57,14 +57,39 @@ class ProductsCard extends StatelessWidget {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
+                          EdgeInsets.only(top: 25.0, left: 10.0, right: 10),
                       child: Text(
                         coffeeProduct.description!,
                         maxLines: 3,
                         style: TextStyle(
                             color: AppTheme.textColor,
-                            fontSize: 20,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
+                            fontFamily: 'SF Pro Display'),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(top: 15.0, left: 10.0, right: 10),
+                      child: Text(
+                        'Bean: ${coffeeProduct.bean!}',
+                        maxLines: 3,
+                        style: TextStyle(
+                            color: AppTheme.textColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SF Pro Display'),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 10.0, right: 10),
+                      child: Text(
+                        'Origin: ${coffeeProduct.origin!}',
+                        maxLines: 3,
+                        style: TextStyle(
+                            color: AppTheme.textColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
                             fontFamily: 'SF Pro Display'),
                       ),
                     ),

@@ -72,7 +72,7 @@ class AboutUsPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10.0, right: 20),
+            padding: const EdgeInsets.only(top: 10.0, right: 20, bottom: 20),
             child: Text(
               'Two species of coffee plants, Coffea arabica and C. canephora, supply almost all of the world’s consumption. Arabica is considered a milder and more flavourful and aromatic brew than Robusta, the main variety of C. canephora. The flatter and more elongated Arabica bean is more widespread than Robusta but more delicate and vulnerable to pests, requiring a cool subtropical climate; Arabica must grow at higher elevations (2,000–6,500 feet [600–2,000 metres]), it needs a lot of moisture, and it has fairly specific shade requirements. Latin America, eastern Africa, Asia, and Arabia are leading producers of Arabica coffee. The rounder, more convex Robusta bean, as its name suggests, is hardier and can grow at lower altitudes (from sea level to 2,000 feet). Robusta coffee is cheaper to produce, has twice the caffeine content of Arabica, and is typically the bean of choice for inexpensive commercial coffee brands. Western and Central Africa, Southeast Asia, and Brazil are major producers of Robusta coffee.',
               style: TextStyle(

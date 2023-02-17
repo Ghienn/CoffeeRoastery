@@ -43,7 +43,7 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
         padding: EdgeInsets.symmetric(
             horizontal: maxWidth * 0.048, vertical: maxHeight * 0.015),
         width: maxWidth,
-        height: maxHeight * (49 / 812),
+        height: maxHeight * (50 / 790),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
