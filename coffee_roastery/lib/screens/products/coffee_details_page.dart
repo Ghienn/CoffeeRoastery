@@ -4,6 +4,7 @@ import 'package:coffee_roastery/controller/coffee_product_controller.dart';
 import 'package:coffee_roastery/models/coffee_product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../home_page.dart';
 import '../../models/note_list.dart';
 import '../../theme.dart';
 import '../customDropdownRow.dart';
@@ -170,7 +171,7 @@ class CoffeeDetailsPage extends StatelessWidget {
                 left: 15,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Get.off(MyHomePage());
                   },
                   child: Container(
                     height: 45.0,

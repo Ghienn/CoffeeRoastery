@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import '../../controller/machine_controller.dart';
+import '../../home_page.dart';
 import '../../theme.dart';
 import '../customDropdownRow.dart';
 import '../customRowComponent.dart';
@@ -61,7 +62,7 @@ class GearDetailsPage extends StatelessWidget {
                                   fontFamily: 'SF Pro Display',
                                   color: AppTheme.textColor,
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 25)),
+                                  fontSize: 20)),
                         ),
                         const Padding(
                           padding: EdgeInsets.only(
@@ -70,9 +71,10 @@ class GearDetailsPage extends StatelessWidget {
                               "The Lelit Bianca is a dual boiler, rotary pump, E61 espresso machine with a built-in PID, and shot timer that can be direct plumbed or run on its built-in reservoir. It also comes with a factory fitted flow control device which is the same as the walnut wood accents of the valves.",
                               textAlign: TextAlign.justify,
                               style: TextStyle(
-                                  color: AppTheme.textColor,
+                                  fontFamily: 'SF Pro Display',
+                                  color: Color.fromARGB(255, 143, 128, 122),
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 16)),
+                                  fontSize: 18)),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
@@ -132,7 +134,7 @@ class GearDetailsPage extends StatelessWidget {
                 left: 15,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Get.off(MyHomePage());
                   },
                   child: Container(
                     height: 45.0,

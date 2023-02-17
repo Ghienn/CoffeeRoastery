@@ -1,4 +1,5 @@
 import 'package:coffee_roastery/controller/coffee_tool_controller.dart';
+import 'package:coffee_roastery/home_page.dart';
 import 'package:coffee_roastery/models/coffee_tool.dart';
 import 'package:coffee_roastery/screens/accessories/other_tool_card.dart';
 import 'package:coffee_roastery/screens/products/other_coffee_card.dart';
@@ -74,7 +75,7 @@ class AccessoriesDetailsPage extends StatelessWidget {
                                   fontFamily: 'SF Pro Display',
                                   color: Color.fromARGB(255, 143, 128, 122),
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 16)),
+                                  fontSize: 18)),
                         ),
                         const Padding(
                           padding: EdgeInsets.only(
@@ -116,7 +117,7 @@ class AccessoriesDetailsPage extends StatelessWidget {
                 left: 15,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Get.off(MyHomePage());
                   },
                   child: Container(
                     height: 45.0,
