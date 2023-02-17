@@ -21,18 +21,17 @@ final _coffeeProductController = Get.put(CoffeeProductController());
 
 void main() async {
   await ApiHandler.initApiHanler();
-  await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
-    List<CoffeeProductList> coffeeProductList =
-        value['coffeeProducts'] ?? <CoffeeProductList>[];
-    List<ProductList> productList = value['products'] ?? <ProductList>[];
-    List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
-    _coffeeProductController.coffeeProductsList.clear();
-    _productController.productsList.clear();
-    _coffeeToolController.coffeeToolList.clear();
-    _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
-    _productController.productsList.addAll(productList);
-    _coffeeToolController.coffeeToolList.addAll(toolList);
-  });
+  var value = await ApiRequest.getCoffeeProduct("0365582274", '1');
+  List<CoffeeProductList> coffeeProductList =
+      value['coffeeProducts'] ?? <CoffeeProductList>[];
+  List<ProductList> productList = value['products'] ?? <ProductList>[];
+  List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
+  _coffeeProductController.coffeeProductsList.clear();
+  _productController.productsList.clear();
+  _coffeeToolController.coffeeToolList.clear();
+  _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
+  _productController.productsList.addAll(productList);
+  _coffeeToolController.coffeeToolList.addAll(toolList);
   runApp(MyApp());
 }
 

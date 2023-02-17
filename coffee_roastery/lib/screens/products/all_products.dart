@@ -21,15 +21,15 @@ class _AllProductsPageState extends State<AllProductsPage> {
       GlobalKey<_AllProductsPageState>();
 
   Future<void> CoffeeListRefresh() async {
-    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
+    ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
       List<CoffeeProductList> coffeeProductList =
           value['coffeeProducts'] ?? <CoffeeProductList>[];
-
-      _coffeeProductController.coffeeProductsList.clear();
-      _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
+      setState(() {
+        _coffeeProductController.coffeeProductsList.clear();
+        _coffeeProductController.coffeeProductsList.addAll(coffeeProductList);
+      });
       print("Update product list");
     });
-    setState(() {});
   }
 
   @override

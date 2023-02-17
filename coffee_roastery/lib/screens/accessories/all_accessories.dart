@@ -21,14 +21,15 @@ class _AllAccessoriesPageState extends State<AllAccessoriesPage> {
       GlobalKey<_AllAccessoriesPageState>();
 
   Future<void> AccessoriesListRefresh() async {
-    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
+    ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
       List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
+      setState(() {
+        _coffeeToolController.coffeeToolList.clear();
+        _coffeeToolController.coffeeToolList.addAll(toolList);
+      });
 
-      _coffeeToolController.coffeeToolList.clear();
-      _coffeeToolController.coffeeToolList.addAll(toolList);
       print("Update product tool list");
     });
-    setState(() {});
   }
 
   @override

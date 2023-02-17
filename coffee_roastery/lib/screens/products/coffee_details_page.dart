@@ -109,7 +109,8 @@ class CoffeeDetailsPage extends StatelessWidget {
                           componentsList: [
                             CustomRowComponent(
                                 title: 'Roast Date',
-                                value: coffeeProduct.roastDate!),
+                                value: coffeeProduct.roastDate!.substring(
+                                    0, coffeeProduct.roastDate!.indexOf(' '))),
                             CustomRowComponent(
                                 title: 'Roast Purpose',
                                 value: coffeeProduct.roastPurpose!),

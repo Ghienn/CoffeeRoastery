@@ -43,12 +43,13 @@ class _MyHomePageState extends State<MyHomePage> {
       GlobalKey<_MyHomePageState>();
 
   Future<void> ProductsListRefresh() async {
-    await ApiRequest.getCoffeeProduct("0365582274", '1').then((value) {
-      // print(value);
-      List<CoffeeProductList> coffeeProductList =
-          value['coffeeProducts'] ?? <CoffeeProductList>[];
-      List<ProductList> productList = value['products'] ?? <ProductList>[];
-      List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
+    var value = await ApiRequest.getCoffeeProduct("0365582274", '1');
+    List<CoffeeProductList> coffeeProductList =
+        value['coffeeProducts'] ?? <CoffeeProductList>[];
+    List<ProductList> productList = value['products'] ?? <ProductList>[];
+    List<CoffeeToolList> toolList = value['tools'] ?? <CoffeeToolList>[];
+
+    setState(() {
       _coffeeProductController.coffeeProductsList.clear();
       _productController.productsList.clear();
       _coffeeToolController.coffeeToolList.clear();
@@ -56,7 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
       _productController.productsList.addAll(productList);
       _coffeeToolController.coffeeToolList.addAll(toolList);
     });
-    setState(() {});
   }
 
   @override
