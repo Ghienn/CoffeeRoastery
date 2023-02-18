@@ -37,6 +37,7 @@ class SearchPage extends SearchDelegate<CoffeeProductList> {
 
     List<String> matchQuery = [];
     List<String> products = <String>[];
+
     for (var itemCoffee in _coffeeProductList.coffeeProductsList) {
       products.clear;
       // products.add(itemCoffee.description!);

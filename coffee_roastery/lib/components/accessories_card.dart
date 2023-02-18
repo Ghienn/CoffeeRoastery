@@ -26,6 +26,8 @@ class CoffeeToolCard extends StatelessWidget {
           height: 150,
           width: 400.0,
           decoration: BoxDecoration(
+            border: Border.all(
+                color: AppTheme.textColor.withOpacity(0.2), width: 2.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.3),
@@ -46,7 +48,7 @@ class CoffeeToolCard extends StatelessWidget {
                 margin: const EdgeInsets.all(6.0),
                 width: 125,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
+                    borderRadius: BorderRadius.circular(25.0),
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(coffeeTool.pictureFirebase!))),

@@ -24,6 +24,8 @@ class ProductsCard extends StatelessWidget {
           height: 150,
           width: 400.0,
           decoration: BoxDecoration(
+            border: Border.all(
+                color: AppTheme.textColor.withOpacity(0.2), width: 2.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.3),
@@ -44,11 +46,14 @@ class ProductsCard extends StatelessWidget {
                 margin: const EdgeInsets.all(6.0),
                 width: 125,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(coffeeProduct.pictureFirebase!),
-                    )),
+                  // border: Border.all(
+                  //     color: AppTheme.textColor.withOpacity(0.7), width: 2.0),
+                  borderRadius: BorderRadius.circular(25.0),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(coffeeProduct.pictureFirebase!),
+                  ),
+                ),
               ),
               Expanded(
                 child: Column(
@@ -75,7 +80,7 @@ class ProductsCard extends StatelessWidget {
                         'Bean: ${coffeeProduct.bean!}',
                         maxLines: 3,
                         style: TextStyle(
-                            color: AppTheme.textColor,
+                            color: AppTheme.textColor.withOpacity(0.8),
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                             fontFamily: 'SF Pro Display'),
@@ -87,7 +92,7 @@ class ProductsCard extends StatelessWidget {
                         'Origin: ${coffeeProduct.origin!}',
                         maxLines: 3,
                         style: TextStyle(
-                            color: AppTheme.textColor,
+                            color: AppTheme.textColor.withOpacity(0.8),
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                             fontFamily: 'SF Pro Display'),

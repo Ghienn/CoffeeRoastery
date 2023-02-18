@@ -20,6 +20,9 @@ class CoffeeProductController extends GetxController {
     query = suggestion;
     int index1 = coffeeProductsList.indexWhere((item) => item.code == query);
     return ListTile(
+      // Divider(
+      //   height: 1,
+      // ),
       leading: Image.network(
         coffeeProductsList[index1].pictureFirebase!,
         fit: BoxFit.cover,
