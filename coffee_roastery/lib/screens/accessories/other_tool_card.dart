@@ -31,6 +31,7 @@ class OtherToolCard extends StatelessWidget {
               height: 200,
               width: 150,
               decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey.withOpacity(0.5)),
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                   boxShadow: [

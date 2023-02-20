@@ -48,7 +48,7 @@ class CoffeeToolCard extends StatelessWidget {
                 margin: const EdgeInsets.all(6.0),
                 width: 125,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25.0),
+                    borderRadius: BorderRadius.circular(20.0),
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(coffeeTool.pictureFirebase!))),

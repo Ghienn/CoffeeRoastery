@@ -39,6 +39,14 @@ class CoffeeProductCard extends StatelessWidget {
                               height: 260.0,
                               width: 225.0,
                               decoration: BoxDecoration(
+                                  // boxShadow: [
+                                  //   BoxShadow(
+                                  //     color: Colors.grey.withOpacity(0.3),
+                                  //     spreadRadius: 3,
+                                  //     blurRadius: 8,
+                                  //     offset: const Offset(2, 2),
+                                  //   ),
+                                  // ],
                                   borderRadius: BorderRadius.circular(25.0),
                                   color: Color(0xFFB68E72)),
                               child: Column(

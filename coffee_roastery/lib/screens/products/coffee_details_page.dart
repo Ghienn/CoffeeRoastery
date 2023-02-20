@@ -13,6 +13,7 @@ import 'other_coffee_card.dart';
 
 class CoffeeDetailsPage extends StatelessWidget {
   final CoffeeProductList coffeeProduct;
+
   final _coffeeProductController = Get.put(CoffeeProductController());
   CoffeeDetailsPage({Key? key, required this.coffeeProduct}) : super(key: key);
 
@@ -27,6 +28,7 @@ class CoffeeDetailsPage extends StatelessWidget {
     }
 
     List<String> notelist = returnNote();
+
     print(notelist);
 
     return Scaffold(
@@ -118,17 +120,75 @@ class CoffeeDetailsPage extends StatelessWidget {
                           ],
                           initiallyExpanded: false,
                         ),
-                        CustomDropdownRow(
-                          title: 'Notes',
-                          componentsList: [
-                            CustomRowComponent(
-                                title: 'Note',
-                                value: notelist
-                                    .toString()
-                                    .replaceAll('[', '')
-                                    .replaceAll(']', '')),
+                        ExpansionTile(
+                          title: Text('Notes',
+                              style: const TextStyle(
+                                  fontFamily: 'SF Pro Display',
+                                  color: AppTheme.darkColor,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20)),
+                          initiallyExpanded: true,
+                          // tilePadding: EdgeInsets.symmetric(horizontal: maxWidth * 0.048),
+                          tilePadding: EdgeInsets.symmetric(horizontal: 20),
+                          // childrenPadding: EdgeInsets.symmetric(horizontal: 2),
+                          textColor: AppTheme.textColor,
+                          collapsedTextColor: AppTheme.darkColor,
+                          iconColor: AppTheme.darkColor,
+                          collapsedIconColor: AppTheme.darkColor,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width *
+                                          0.045),
+                              width: MediaQuery.of(context).size.width,
+                              child: Wrap(
+                                  spacing: 5.0,
+                                  children: List.generate(
+                                      coffeeProduct.noteList!.length, (index) {
+                                    return Tooltip(
+                                      textStyle: TextStyle(
+                                          fontFamily: 'SF Pro Display',
+                                          color: Colors.white),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          color: Colors.grey[700]!
+                                              .withOpacity(0.9)),
+                                      message:
+                                          'Flavor: ${coffeeProduct.noteList![index].flavorDescription}\nNoteType: ${coffeeProduct.noteList![index].noteTypeDescription}',
+                                      preferBelow: false,
+                                      showDuration: Duration(seconds: 3),
+                                      triggerMode: TooltipTriggerMode.tap,
+                                      waitDuration: Duration(seconds: 0),
+                                      child: Chip(
+                                        side: BorderSide(
+                                            width: 1.0,
+                                            color: AppTheme.dividerColor),
+                                        backgroundColor: Color(
+                                          int.parse(
+                                              'FF' +
+                                                  coffeeProduct.noteList![index]
+                                                      .noteHexColor!,
+                                              radix: 16),
+                                        ),
+                                        labelStyle: TextStyle(
+                                            fontFamily: 'SF Pro Display',
+                                            fontSize: 16,
+                                            color:
+                                                Colors.black.withOpacity(0.7)),
+                                        label: Text(coffeeProduct
+                                            .noteList![index].noteDescription!),
+                                        avatar: Icon(
+                                          Icons.info_outline,
+                                          color: Colors.black.withOpacity(0.7),
+                                          size: 20,
+                                        ),
+                                      ),
+                                    );
+                                  })),
+                            )
                           ],
-                          initiallyExpanded: false,
                         ),
                         const Padding(
                           padding: EdgeInsets.only(
@@ -190,3 +250,32 @@ class CoffeeDetailsPage extends StatelessWidget {
     );
   }
 }
+
+// class MyTooltip extends StatelessWidget {
+//   final Widget child;
+//   final String message;
+
+//   MyTooltip({required this.child, required this.message});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final key = GlobalKey<State<Tooltip>>();
+//     return Tooltip(
+      
+//       preferBelow: false,
+//       triggerMode: TooltipTriggerMode.tap,
+//       key: key,
+//       message: message,
+//       child: GestureDetector(
+//         behavior: HitTestBehavior.opaque,
+//         onTap: () => _onTap(key),
+//         child: child,
+//       ),
+//     );
+//   }
+
+//   void _onTap(GlobalKey key) {
+//     final dynamic tooltip = key.currentState;
+//     tooltip?.ensureTooltipVisible();
+//   }
+// }

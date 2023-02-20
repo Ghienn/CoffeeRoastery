@@ -29,21 +29,11 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
     bool? enabled = widget.enabled;
 
     return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      Padding(
-        padding: EdgeInsets.only(left: maxWidth * 0.048),
-        child: const Divider(
-          height: 1,
-          thickness: 1,
-          indent: 0,
-          endIndent: 20,
-          color: AppTheme.dividerColor,
-        ),
-      ),
       Container(
         padding: EdgeInsets.symmetric(
             horizontal: maxWidth * 0.048, vertical: maxHeight * 0.015),
         width: maxWidth,
-        height: maxHeight * (50 / 790),
+        // height: maxHeight * (45 / 790),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -55,6 +45,7 @@ class _CustomRowComponentState extends State<CustomRowComponent> {
                     fontWeight: FontWeight.w500)),
             Flexible(
               child: Container(
+                width: 200,
                 child: Text(
                   value,
                   overflow: TextOverflow.ellipsis,
