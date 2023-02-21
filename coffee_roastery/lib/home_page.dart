@@ -26,6 +26,7 @@ import 'models/product.dart';
 import 'screens/products/coffee_details_page.dart';
 import 'components/machine_card.dart';
 import 'screens/machines/gear_detail.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -83,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Builder(builder: (context) {
             return SafeArea(
               child: ListView(
-                padding: EdgeInsets.only(left: 20.0),
+                padding: EdgeInsets.only(left: 15.0),
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
@@ -179,93 +180,113 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                   // SizedBox(height: 15.0),
-                  SizedBox(
-                      height: 350.0,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _coffeeProductController
-                              .coffeeProductsList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            print(_coffeeProductController
-                                .coffeeProductsList[index]);
-                            return CoffeeProductCard(
+                  GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.69,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    scrollDirection: Axis.vertical,
+                    itemCount:
+                        _coffeeProductController.coffeeProductsList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      print(_coffeeProductController.coffeeProductsList[index]);
+                      return AnimationConfiguration.staggeredGrid(
+                        columnCount: 2,
+                        position: index,
+                        child: ScaleAnimation(
+                          child: FadeInAnimation(
+                            child: CoffeeProductCard(
                               coffeeProduct: _coffeeProductController
                                   .coffeeProductsList[index],
                               isFavorite: false,
-                            );
-                          })),
-                  SizedBox(height: 10.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: <Widget>[
-                      const Text(
-                        'MACHINE GEAR',
-                        style: TextStyle(
-                            fontFamily: 'SF Pro Display',
-                            fontSize: 20.0,
-                            color: AppTheme.darkColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AllProductPage()));
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Text(
-                            'See all',
-                            style: TextStyle(
-                                fontFamily: 'SF Pro Display',
-                                fontSize: 18.0,
-                                color: Color.fromARGB(255, 153, 137, 130)),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                  ...List.generate(3, (index) {
-                    return ProductCard(
-                        product: _productController.productsList[index]);
-                  }),
-                  SizedBox(height: 20.0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: <Widget>[
-                      const Text(
-                        'ACCESSORIES',
-                        style: TextStyle(
-                            fontFamily: 'SF Pro Display',
-                            fontSize: 20.0,
-                            color: AppTheme.darkColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AllAccessoriesPage()));
-                        },
-                        child: const Padding(
-                          padding: EdgeInsets.only(right: 20.0),
-                          child: Text(
-                            'See all',
-                            style: TextStyle(
-                                fontFamily: 'SF Pro Display',
-                                fontSize: 18.0,
-                                color: Color.fromARGB(255, 153, 137, 130)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  ...List.generate(3, (index) {
-                    return CoffeeToolCard(
-                        coffeeTool:
-                            _coffeeToolController.coffeeToolList[index]);
-                  }),
-                  SizedBox(height: 30)
+                  SizedBox(height: 15.0),
+                  //           Row(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             // ignore: prefer_const_literals_to_create_immutables
+                  //             children: <Widget>[
+                  //               const Text(
+                  //                 'MACHINE GEAR',
+                  //                 style: TextStyle(
+                  //                     fontFamily: 'SF Pro Display',
+                  //                     fontSize: 20.0,
+                  //                     color: AppTheme.darkColor,
+                  //                     fontWeight: FontWeight.bold),
+                  //               ),
+                  //               InkWell(
+                  //                 onTap: () {
+                  //                   Navigator.of(context).push(MaterialPageRoute(
+                  //                       builder: (context) => AllProductPage()));
+                  //                 },
+                  //                 child: const Padding(
+                  //                   padding: EdgeInsets.only(right: 20.0),
+                  //                   child: Text(
+                  //                     'See all',
+                  //                     style: TextStyle(
+                  //                         fontFamily: 'SF Pro Display',
+                  //                         fontSize: 18.0,
+                  //                         color: Color.fromARGB(255, 153, 137, 130)),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //           ...List.generate(3, (index) {
+                  //             return ProductCard(
+                  //                 product: _productController.productsList[index]);
+                  //           }),
+                  //           SizedBox(height: 20.0),
+                  //           Row(
+                  //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //             // ignore: prefer_const_literals_to_create_immutables
+                  //             children: <Widget>[
+                  //               const Text(
+                  //                 'ACCESSORIES',
+                  //                 style: TextStyle(
+                  //                     fontFamily: 'SF Pro Display',
+                  //                     fontSize: 20.0,
+                  //                     color: AppTheme.darkColor,
+                  //                     fontWeight: FontWeight.bold),
+                  //               ),
+                  //               InkWell(
+                  //                 onTap: () {
+                  //                   Navigator.of(context).push(MaterialPageRoute(
+                  //                       builder: (context) => AllAccessoriesPage()));
+                  //                 },
+                  //                 child: const Padding(
+                  //                   padding: EdgeInsets.only(right: 20.0),
+                  //                   child: Text(
+                  //                     'See all',
+                  //                     style: TextStyle(
+                  //                         fontFamily: 'SF Pro Display',
+                  //                         fontSize: 18.0,
+                  //                         color: Color.fromARGB(255, 153, 137, 130)),
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //           ...List.generate(3, (index) {
+                  //             return CoffeeToolCard(
+                  //                 coffeeTool:
+                  //                     _coffeeToolController.coffeeToolList[index]);
+                  //           }),
+                  //           SizedBox(height: 30)
+                  //         ],
+                  //       ),
+                  //     );
+                  //   }),
+                  // ));
                 ],
               ),
             );
