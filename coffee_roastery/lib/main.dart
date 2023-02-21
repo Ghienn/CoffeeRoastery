@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: MyHomePage(),
+      home: StartScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -49,4 +49,8 @@ class CoffeeProductController extends GetxController {
       },
     );
   }
+
+  searchProduct({required String value}) {
+    int index = coffeeProductsList.indexWhere((item) => item.code == value);
+  }
 }

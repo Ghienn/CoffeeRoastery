@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'controller/coffee_product_controller.dart';
 
 class SearchPage extends SearchDelegate<CoffeeProductList> {
-  final _searchController = Get.put(CoffeeProductController());
+  // final _searchController = Get.put(CoffeeProductController());
 
   @override
   List<Widget>? buildActions(BuildContext context) {

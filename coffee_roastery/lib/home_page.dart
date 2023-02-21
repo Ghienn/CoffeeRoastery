@@ -163,8 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AllProductsPage()));
+                          Get.to(AllProductsPage());
                         },
                         child: const Padding(
                           padding: EdgeInsets.only(right: 20.0),
