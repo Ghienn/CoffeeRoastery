@@ -32,9 +32,10 @@ class _StartScreenState extends State<StartScreen> {
     final _coffeeProductList = Get.put(CoffeeProductController());
 
     Size size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Container(
           // ignore: sort_child_properties_last
           child: Column(
             children: [
@@ -62,8 +63,8 @@ class _StartScreenState extends State<StartScreen> {
                   },
                   decoration: InputDecoration(
                       border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search),
-                      hintText: 'Search',
+                      prefixIcon: Icon(Icons.search, color: AppTheme.textColor),
+                      hintText: 'Search Products',
                       contentPadding:
                           EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                       hintStyle: TextStyle(
@@ -136,7 +137,7 @@ class _StartScreenState extends State<StartScreen> {
           decoration: const BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/background2.jpg'))),
+                  image: AssetImage('assets/background8.jpg'))),
         ),
       ),
     );
